@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Application</string>
+    <string name="elderly">Elderly</string>
+    <string name="caretaker">Caretaker</string>
+    <string name="ngo">NGO</string>
+    <string name="login">Login</string>
+</resources>
