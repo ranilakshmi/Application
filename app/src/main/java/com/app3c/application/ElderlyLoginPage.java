@@ -58,7 +58,7 @@ public class ElderlyLoginPage extends AppCompatActivity {
                                 }
                                 else{
                                     Context context = getApplicationContext();
-                                    CharSequence text = "Incorrect password.Correct password is"+ userpassword;
+                                    CharSequence text = "Incorrect password";
                                     int duration = Toast.LENGTH_SHORT;
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
@@ -66,7 +66,7 @@ public class ElderlyLoginPage extends AppCompatActivity {
                             }
                             else{
                                 Context context = getApplicationContext();
-                                CharSequence text = "Incorrect credentials";
+                                CharSequence text = "Incorrect phone number";
                                 int duration = Toast.LENGTH_SHORT;
                                 Toast toast = Toast.makeText(context, text, duration);
                                 toast.show();
