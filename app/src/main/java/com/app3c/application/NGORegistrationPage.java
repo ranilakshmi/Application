@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class NGORegistrationPage extends AppCompatActivity {
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://application-2dd21-default-rtdb.firebaseio.com/");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://application-36c82-default-rtdb.firebaseio.com/");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,11 +82,11 @@ public class NGORegistrationPage extends AppCompatActivity {
                                 toast.show();
                                 finish();
 
-                                databaseReference.child("ngo").child(email).child("name").setValue(fullname);
-                                databaseReference.child("ngo").child(email).child("description").setValue(desc);
-                                databaseReference.child("ngo").child(email).child("contact").setValue(contact);
-                                databaseReference.child("ngo").child(email).child("location").setValue(location);
-                                databaseReference.child("ngo").child(email).child("password").setValue(password);
+                                databaseReference.child("ngo").child(contact).child("name").setValue(fullname);
+                                databaseReference.child("ngo").child(contact).child("description").setValue(desc);
+                                databaseReference.child("ngo").child(contact).child("contact").setValue(email);
+                                databaseReference.child("ngo").child(contact).child("location").setValue(location);
+                                databaseReference.child("ngo").child(contact).child("password").setValue(password);
 
                             }
                         }
