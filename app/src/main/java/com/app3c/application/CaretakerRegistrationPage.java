@@ -64,7 +64,7 @@ public class CaretakerRegistrationPage extends AppCompatActivity {
                     toast.show();
                 }
                 else{
-                    databaseReference.child("ngo").addListenerForSingleValueEvent(new ValueEventListener() {
+                    databaseReference.child("caretaker").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.hasChild(caretakerphone)){
