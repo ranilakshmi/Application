@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class NGOLoginPage extends AppCompatActivity {
 
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://application-36c82-default-rtdb.firebaseio.com/");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,19 +45,55 @@ public class NGOLoginPage extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                final TextView NGOemail = findViewById(R.id.ngo_email);
+                final TextView NGOcontact = findViewById(R.id.ngo_contact);
                 final TextView NGOpassword = findViewById(R.id.NGOpassword);
-                String email = NGOemail.getText().toString();
+                String contact = NGOcontact.getText().toString();
                 String password = NGOpassword.getText().toString();
 
-                Context context = getApplicationContext();
-                CharSequence text = "Email:" + email + " ,Password: " + password;
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                if (contact.isEmpty() || password.isEmpty()){
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please enter all the details";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                else{
+                    databaseReference.child("ngo").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(contact)) {
+                                String ngopassword = snapshot.child(contact).child("password").getValue().toString();
+                                if (password.equals(ngopassword)){
+                                    Context context = getApplicationContext();
+                                    CharSequence text = "Success";
+                                    int duration = Toast.LENGTH_SHORT;
+                                    Toast toast = Toast.makeText(context, text, duration);
+                                    toast.show();
+                                }
+                                else{
+                                    Context context = getApplicationContext();
+                                    CharSequence text = "Incorrect password";
+                                    int duration = Toast.LENGTH_SHORT;
+                                    Toast toast = Toast.makeText(context, text, duration);
+                                    toast.show();
+                                }
+                            }
+                            else{
+                                Context context = getApplicationContext();
+                                CharSequence text = "Incorrect phone number";
+                                int duration = Toast.LENGTH_SHORT;
+                                Toast toast = Toast.makeText(context, text, duration);
+                                toast.show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
             }
         });
     }
-
-
 }
