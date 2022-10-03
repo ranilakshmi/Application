@@ -5,11 +5,17 @@
       <map>
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_caretaker_login.xml" value="0.12993920972644377" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_caretaker_register.xml" value="0.19429347826086957" />
+        <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_create_event.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_elderly_login.xml" value="0.33" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_elderly_register.xml" value="0.25" />
+        <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_event.xml" value="0.1" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_main.xml" value="0.2671875" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_ngo_login.xml" value="0.12943262411347517" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_ngo_register.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/dimens.xml" value="0.1" />
+        <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/input_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/model.xml" value="0.1" />
       </map>
     </option>
   </component>
