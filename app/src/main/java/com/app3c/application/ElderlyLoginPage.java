@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app3c.application.feed.Event;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -55,6 +56,7 @@ public class ElderlyLoginPage extends AppCompatActivity {
                                     int duration = Toast.LENGTH_SHORT;
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
+                                    startActivity(new Intent(ElderlyLoginPage.this, Event.class));
                                 }
                                 else{
                                     Context context = getApplicationContext();
