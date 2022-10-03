@@ -84,7 +84,7 @@ public class NGORegistrationPage extends AppCompatActivity {
 
                                 databaseReference.child("ngo").child(contact).child("name").setValue(fullname);
                                 databaseReference.child("ngo").child(contact).child("description").setValue(desc);
-                                databaseReference.child("ngo").child(contact).child("contact").setValue(email);
+                                databaseReference.child("ngo").child(contact).child("email").setValue(email);
                                 databaseReference.child("ngo").child(contact).child("location").setValue(location);
                                 databaseReference.child("ngo").child(contact).child("password").setValue(password);
 

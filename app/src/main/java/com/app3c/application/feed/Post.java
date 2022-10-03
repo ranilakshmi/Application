@@ -5,7 +5,11 @@ public class Post {
 
     public Post() {
     }
-
+    public Post(String heading,String subheading,String detail){
+        this.heading = heading;
+        this.subheading = subheading;
+        this.detail = detail;
+    }
     public String getHeading() {
         return heading;
     }

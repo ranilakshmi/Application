@@ -11,9 +11,9 @@ import com.app3c.application.R;
 import java.util.ArrayList;
 public class CustomAdapter extends BaseAdapter {
     Context c;
-    ArrayList<Post> Posts;
+    ArrayList<Event_Post> Posts;
 
-    public CustomAdapter(Context c, ArrayList<Post> Posts) {
+    public CustomAdapter(Context c, ArrayList<Event_Post> Posts) {
         this.c = c;
         this.Posts = Posts;
     }

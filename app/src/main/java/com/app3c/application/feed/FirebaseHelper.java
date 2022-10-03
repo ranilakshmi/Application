@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class FirebaseHelper {
     DatabaseReference db;
     Boolean saved;
-    ArrayList<Post> Posts=new ArrayList<>();
+    ArrayList<Event_Post> Posts=new ArrayList<>();
 
     public FirebaseHelper(DatabaseReference db) {
         this.db = db;
     }
 
-    public Boolean save(Post Post)
+    public Boolean save(Post Post,String dbName)
     {
         if(Post==null)
         {
@@ -25,7 +25,7 @@ public class FirebaseHelper {
         {
             try
             {
-                db.child("Post").push().setValue(Post);
+                db.child(dbName).push().setValue(Post);
                 saved=true;
 
             }catch (DatabaseException e)
@@ -41,14 +41,16 @@ public class FirebaseHelper {
     //IMPLEMENT FETCH DATA AND FILL ARRAYLIST
     private void fetchData(DataSnapshot dataSnapshot)
     {
-        Post Post=dataSnapshot.getValue(Post.class);
-        Posts.add(Post);
+        //Post Post=dataSnapshot.getValue(Post.class);
+        //Posts.add(Post);
+        Event_Post post = dataSnapshot.getValue(Event_Post.class);
+        Posts.add(post);
     }
 
     //RETRIEVE
-    public ArrayList<Post> retrieve()
+    public ArrayList<Event_Post> retrieve()
     {
-        db.addChildEventListener(new ChildEventListener() {
+        db.child("event").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 fetchData(dataSnapshot);
@@ -77,6 +79,4 @@ public class FirebaseHelper {
         });
         return Posts;
     }
-
-
 }

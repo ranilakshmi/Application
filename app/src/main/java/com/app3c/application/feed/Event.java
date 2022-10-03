@@ -77,7 +77,7 @@ public class Event extends AppCompatActivity {
         });
     }
     //DISPLAY INPUT DIALOG
-    private void displayInputDialog() {
+    /*private void displayInputDialog() {
       Dialog d = new Dialog(this);
       d.setTitle("Save To Firebase");
         d.setContentView(R.layout.input_dialog);
@@ -107,7 +107,7 @@ public class Event extends AppCompatActivity {
                 //SIMPLE VALIDATION
                 if (head != null && head.length() > 0) {
                     //THEN SAVE
-                    if (helper.save(p)) {
+                    if (helper.save(p,"post")) {
                         //IF SAVED CLEAR EDITXT
                         headEditTxt.setText("");
                         subheadTxt.setText("");
@@ -123,5 +123,5 @@ public class Event extends AppCompatActivity {
             }
         });
         d.show();
-    }
+    }*/
 }

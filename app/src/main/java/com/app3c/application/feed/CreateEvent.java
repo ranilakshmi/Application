@@ -38,6 +38,7 @@ public class CreateEvent extends AppCompatActivity {
         final EditText eventLocation = findViewById(R.id.event_location);
         final Button RegisterBtn = findViewById(R.id.eventRegisterBtn);
 
+
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,39 +57,16 @@ public class CreateEvent extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }
-
-                else{
-                    databaseReference.child("event").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.hasChild(EventName)){
-                                Context context = getApplicationContext();
-                                CharSequence text = "Event is already registered";
-                                int duration = Toast.LENGTH_SHORT;
-                                Toast toast = Toast.makeText(context, text, duration);
-                                toast.show();
-                            }
-                            else{
-                                Context context = getApplicationContext();
-                                CharSequence text = "Event Registered";
-                                int duration = Toast.LENGTH_SHORT;
-                                Toast toast = Toast.makeText(context, text, duration);
-                                toast.show();
-                                finish();
-
-                                databaseReference.child("event").child(EventName).child("name").setValue(OrgName);
-                                databaseReference.child("event").child(EventName).child("description").setValue(desc);
-                                databaseReference.child("event").child(EventName).child("contact").setValue(contact);
-                                databaseReference.child("event").child(EventName).child("location").setValue(venue);
-
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                else {
+                    Event_Post event_post = new Event_Post(EventName,OrgName,desc,contact,venue);
+                    FirebaseHelper helper = new FirebaseHelper(databaseReference);
+                    helper.save(event_post,"event");
+                    Context context = getApplicationContext();
+                    CharSequence text = "Event Registered";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    finish();
 
                 }
             }
