@@ -4,6 +4,7 @@
     <string name="caretaker">Caretaker</string>
     <string name="ngo">NGO</string>
     <string name="login">Login</string>
+<<<<<<< HEAD
     <string name="event_details">Lorem ipsum dolor sit amet. Ut odio volupta nesciuntid reprehendei accusantdae eos facere maitae eos quae rerum sed aliquid corrupti. Aut dolore voluptatum est accusantium voluptatem aut internos nobis et voluptas deserunt et laborum maiores. In adipisci eligendi in harum facere sit aspernatur recusandae sit earum aliquam in temporibus ullam eos illum voluptates quo cupiditate blanditiis. Ad dolores inventore non commodi dolore et quae velit aut error.</string>
     <string name="firebaseurl">https://geriatric-care-66697-default-rtdb.firebaseio.com/</string>
     <string name="title_activity_events_page">EventsPageActivity</string>
@@ -21,4 +22,32 @@
     <string name="pick_date">Select Date</string>
     <string name="choose">Choose</string>
     <string name="upload">Upload</string>
+=======
+    <string name="title_medicine_name">Medicine Name</string>
+    <string name="hint_enter_med_name">Enter Medicine</string>
+    <string name="medicine_days">Medicine Days</string>
+    <string name="title_treatment_deadline">Treatment deadline</string>
+    <string name="title_continuous_use">Continuous use</string>
+    <string name="title_reminder">Reminder</string>
+    <string name="new_medicine">NEW MEDICINE</string>
+    <string name="every_day">Every day</string>
+    <string name="no_medicine_added">No Medicine Added</string>
+    <string name="loading_tasks_error">Error while loading medicineAlarms</string>
+    <string name="successfully_saved_me_message">Medicine Added Successfully</string>
+    <string name="successfully_deleted_message">Medicine deleted Successfully</string>
+    <string name="reminder_message">It\'s Time to take your medicine</string>
+    <string name="ignored">IGNORED</string>
+    <string name="taken">TAKEN</string>
+    <string name="all">ALL</string>
+    <string name="menu_filter">Filter</string>
+    <string name="all_label">All Medicines</string>
+    <string name="ignore_label">Medicines Ignored</string>
+    <string name="taken_label">Medicine Taken</string>
+    <string name="no_history">No History Found</string>
+    <string name="no_taken_med_history">You have not taken any medicine</string>
+    <string name="no_ignored_history">Well Done</string>
+    <string name="menu_stats">Monthly Report</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+>>>>>>> 02f3ef1c87543f9ccc327b9d2bf6f6f47ef78362
 </resources>
