@@ -16,6 +16,7 @@ import com.app3c.application.R;
 import com.app3c.application.elderly.Elderly;
 import com.app3c.application.elderly.ElderlyLoginPage;
 import com.app3c.application.feed.Event;
+import com.app3c.application.medicine.MedicineActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,9 +67,9 @@ public class CaretakerLoginPage extends AppCompatActivity {
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
 
-                                    Intent intent = new Intent(CaretakerLoginPage.this, CaretakerAppliedEventsPage.class);
-                                    Caretaker caretaker = new Caretaker(phonenumber);
-                                    intent.putExtra("caretaker",caretaker);
+                                    Intent intent = new Intent(CaretakerLoginPage.this, MedicineActivity.class);
+                                    //Caretaker caretaker = new Caretaker(phonenumber);
+                                    //intent.putExtra("caretaker",caretaker);
                                     startActivity(intent);
 
 

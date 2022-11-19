@@ -31,7 +31,7 @@
             android:contentDescription="@null"
             android:src="@drawable/icon_my_health" />
 
-        <com.project.geriarticcare.views.RobotoLightTextView
+        <com.app3c.application.views.RobotoLightTextView
             android:id="@+id/noMedText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

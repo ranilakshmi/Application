@@ -61,10 +61,10 @@
         <activity
             android:name=".feed.CreateEvent"
             android:exported="false" />
-        <activity android:name="com.app3c.application.medicine.MedicineActivity" android:exported="false"/>
-        <activity android:name="com.app3c.application.addmedicine.AddMedicineActivity" />
-        <activity android:name="com.app3c.application.alarm.ReminderActivity" />
-        <activity android:name="com.app3c.application.report.MonthlyReportActivity" />
+        <activity android:name="com.app3c.application.medicine.MedicineActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
+        <activity android:name="com.app3c.application.addmedicine.AddMedicineActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
+        <activity android:name="com.app3c.application.alarm.ReminderActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false" />
+        <activity android:name="com.app3c.application.report.MonthlyReportActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
     </application>
 
 </manifest>
