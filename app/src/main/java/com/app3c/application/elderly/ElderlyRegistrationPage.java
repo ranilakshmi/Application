@@ -1,4 +1,4 @@
-package com.app3c.application;
+package com.app3c.application.elderly;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app3c.application.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ElderlyRegistrationPage extends AppCompatActivity {
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://application-36c82-default-rtdb.firebaseio.com/");
+    
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -105,7 +107,7 @@ public class ElderlyRegistrationPage extends AppCompatActivity {
         ElderlyLoginNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ElderlyRegistrationPage.this,ElderlyLoginPage.class));
+                startActivity(new Intent(ElderlyRegistrationPage.this, ElderlyLoginPage.class));
             }
         });
     }

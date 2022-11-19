@@ -27,7 +27,6 @@ public class FirebaseHelper {
             {
                 db.child(dbName).push().setValue(Post);
                 saved=true;
-
             }catch (DatabaseException e)
             {
                 e.printStackTrace();
@@ -44,6 +43,8 @@ public class FirebaseHelper {
         //Post Post=dataSnapshot.getValue(Post.class);
         //Posts.add(Post);
         Event_Post post = dataSnapshot.getValue(Event_Post.class);
+        String key = dataSnapshot.getKey();
+        post.setKey(key);
         Posts.add(post);
     }
 
@@ -59,7 +60,6 @@ public class FirebaseHelper {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 fetchData(dataSnapshot);
-
             }
 
             @Override

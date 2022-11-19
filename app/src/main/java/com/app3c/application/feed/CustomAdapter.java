@@ -1,6 +1,7 @@
 package com.app3c.application.feed;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,16 +9,33 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.app3c.application.R;
+import com.app3c.application.caretaker.Caretaker;
+import com.app3c.application.elderly.Elderly;
+import com.app3c.application.elderly.ElderlyLoginPage;
+import com.app3c.application.elderly.ElderlyRegistrationPage;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 public class CustomAdapter extends BaseAdapter {
     Context c;
     ArrayList<Event_Post> Posts;
+    Elderly user;
+    Caretaker caretaker;
 
     public CustomAdapter(Context c, ArrayList<Event_Post> Posts) {
         this.c = c;
         this.Posts = Posts;
     }
-
+    public CustomAdapter(Context c, ArrayList<Event_Post> Posts, Elderly user) {
+        this.c = c;
+        this.Posts = Posts;
+        this.user = user;
+    }
+    public CustomAdapter(Context c, ArrayList<Event_Post> Posts, Caretaker caretaker){
+        this.c = c;
+        this.Posts = Posts;
+        this.caretaker = caretaker;
+    }
     @Override
     public int getCount() {
         return Posts.size();
@@ -44,19 +62,28 @@ public class CustomAdapter extends BaseAdapter {
         TextView subheadTxt= (TextView) convertView.findViewById(R.id.subheadTxt);
         TextView detailTxt= (TextView) convertView.findViewById(R.id.detailTxt);
 
-        final Post s= (Post) this.getItem(position);
+        final Event_Post p= (Event_Post) this.getItem(position);
 
-        headTxt.setText(s.getHeading());
-        subheadTxt.setText(s.getSubheading());
-        detailTxt.setText(s.getDetail());
+        headTxt.setText(p.getHeading());
+        subheadTxt.setText(p.getSubheading());
+        detailTxt.setText(p.getDetail());
 
-        //ONITECLICK
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(c,s.getHeading(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(c,p.getHeading(),Toast.LENGTH_SHORT).show();
+                ViewEventDetails(p);
+                //startActivity(new Intent(this, Event_Details_Page.class));
             }
         });
         return convertView;
+    }
+
+    private void ViewEventDetails(Event_Post p) {
+        Intent intent = new Intent(c,Event_Details_Page.class);
+        intent.putExtra("selected_event",p);
+        intent.putExtra("user",user);
+        c.startActivity(intent);
     }
 }

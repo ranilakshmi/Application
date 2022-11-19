@@ -1,4 +1,4 @@
-package com.app3c.application;
+package com.app3c.application.elderly;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app3c.application.R;
 import com.app3c.application.feed.Event;
 import com.app3c.application.medicine.MedicineActivity;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ElderlyLoginPage extends AppCompatActivity {
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://application-36c82-default-rtdb.firebaseio.com/");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,10 @@ public class ElderlyLoginPage extends AppCompatActivity {
                                     int duration = Toast.LENGTH_SHORT;
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
-                                    startActivity(new Intent(ElderlyLoginPage.this, Event.class));
+                                    Intent intent = new Intent(ElderlyLoginPage.this,Event.class);
+                                    Elderly u = new Elderly(phonenumber);
+                                    intent.putExtra("user",u);
+                                    startActivity(intent);
                                 }
                                 else{
                                     Context context = getApplicationContext();
@@ -89,7 +93,7 @@ public class ElderlyLoginPage extends AppCompatActivity {
         ElderlyRegisterNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ElderlyLoginPage.this,ElderlyRegistrationPage.class));
+                startActivity(new Intent(ElderlyLoginPage.this, ElderlyRegistrationPage.class));
             }
         });
     }

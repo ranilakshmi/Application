@@ -1,4 +1,4 @@
-package com.app3c.application;
+package com.app3c.application.caretaker;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app3c.application.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CaretakerRegistrationPage extends AppCompatActivity {
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://application-36c82-default-rtdb.firebaseio.com/");
+    
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,12 +84,16 @@ public class CaretakerRegistrationPage extends AppCompatActivity {
                                 toast.show();
                                 finish();
 
-                                databaseReference.child("caretaker").child(caretakerphone).child("caretaker_name").setValue(caretakerfullname);
-                                databaseReference.child("caretaker").child(caretakerphone).child("elderly_user_name").setValue(elderlyname);
-                                databaseReference.child("caretaker").child(caretakerphone).child("caretaker_email").setValue(caretakeremail);
-                                databaseReference.child("caretaker").child(caretakerphone).child("elderly_phone").setValue(elderlyphone);
-                                databaseReference.child("caretaker").child(caretakerphone).child("caretaker_password").setValue(caretakerpassword);
+                                Caretaker caretaker = new Caretaker(caretakerphone,caretakerfullname,caretakeremail,elderlyname,elderlyphone,caretakerpassword);
+                                databaseReference.child("caretaker").child(caretakerphone).setValue(caretaker);
 
+                                //databaseReference.child("caretaker").child(caretakerphone).child("caretaker_name").setValue(caretakerfullname);
+                                //databaseReference.child("caretaker").child(caretakerphone).child("elderly_user_name").setValue(elderlyname);
+                                //databaseReference.child("caretaker").child(caretakerphone).child("caretaker_email").setValue(caretakeremail);
+                                //databaseReference.child("caretaker").child(caretakerphone).child("elderly_phone").setValue(elderlyphone);
+                                //databaseReference.child("caretaker").child(caretakerphone).child("caretaker_password").setValue(caretakerpassword);
+
+                                startActivity(new Intent(CaretakerRegistrationPage.this, CaretakerLoginPage.class));
                             }
                         }
 
@@ -105,7 +111,7 @@ public class CaretakerRegistrationPage extends AppCompatActivity {
         CaretakerLoginNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CaretakerRegistrationPage.this,CaretakerLoginPage.class));
+                startActivity(new Intent(CaretakerRegistrationPage.this, CaretakerLoginPage.class));
             }
         });
     }

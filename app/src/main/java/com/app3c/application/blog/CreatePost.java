@@ -1,6 +1,7 @@
-package com.app3c.application.feed;
+package com.app3c.application.blog;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,25 +9,25 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
 import com.app3c.application.R;
-import com.app3c.application.blog.CreatePost;
+import com.app3c.application.feed.Post;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -35,11 +36,8 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.UUID;
 
-public class CreateEvent extends AppCompatActivity {
-
-    
+public class CreatePost extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
-
     // Uri indicates, where the image will be picked from
     private Uri filePath;
     private ImageView imageView;
@@ -51,18 +49,13 @@ public class CreateEvent extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_event);
-
-        final EditText eventName = findViewById(R.id.event_name);
-        final EditText organizationName = findViewById(R.id.organization_name);
-        final EditText description = findViewById(R.id.event_description);
-        final EditText eventContact = findViewById(R.id.event_contact);
-        final EditText eventLocation = findViewById(R.id.event_location);
-        final Button RegisterBtn = findViewById(R.id.eventRegisterBtn);
-        final DatePicker datepicker = findViewById(R.id.datepicker);
+        setContentView(R.layout.activity_create_post);
+        EditText postTitle = findViewById(R.id.post_title);
         CheckBox checkbox = findViewById(R.id.checkbox_image);
         Button uploadImageButton = findViewById(R.id.uploadImageBtn);
         imageView = findViewById(R.id.imageView);
+        EditText postContent = findViewById(R.id.post_content);
+        Button publishPostButton = findViewById(R.id.publishBtn);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         uploadImageButton.setOnClickListener(new View.OnClickListener() {
@@ -72,39 +65,36 @@ public class CreateEvent extends AppCompatActivity {
             }
         });
 
-        RegisterBtn.setOnClickListener(new View.OnClickListener() {
+        publishPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String EventName = eventName.getText().toString();
-                final String OrgName = organizationName.getText().toString();
-                final String desc = description.getText().toString();
-                final String contact = eventContact.getText().toString();
-                final String venue = eventLocation.getText().toString();
-                final int day = datepicker.getDayOfMonth();
-                final int month = datepicker.getMonth();
-                final int year = datepicker.getYear();
+                StorageReference ref =  uploadImage();
+                publishPost(view,ref);
+            }
+        });
 
-                if (EventName.isEmpty() || desc.isEmpty()||contact.isEmpty()||OrgName.isEmpty()||venue.isEmpty()){
-                    Context context = getApplicationContext();
-                    CharSequence text = "Please enter all the details";
-                    int duration = Toast.LENGTH_SHORT;
+    }
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
-                else {
-                    Event_Post event_post = new Event_Post(EventName,OrgName,desc,contact,venue,day,month,year);
-                    StorageReference ref = uploadImage();
-                    event_post.setImageurl(ref.toString());
-                    FirebaseHelper helper = new FirebaseHelper(databaseReference);
-                    helper.save(event_post,"event");
-                    Context context = getApplicationContext();
-                    CharSequence text = "Event Registered";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                    finish();
-                }
+    private void publishPost(View view,StorageReference ref) {
+        EditText PostTitle = findViewById(R.id.post_title);
+        EditText PostContent = findViewById(R.id.post_content);
+        String title = PostTitle.getText().toString();
+        String content = PostContent.getText().toString();
+        String imageurl = ref.toString();
+        BlogPost post = new BlogPost(title,content,imageurl);
+        databaseReference.child("posts").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Context context = getApplicationContext();
+                CharSequence text = "Success";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                finish();
+                databaseReference.child("post").push().setValue(post);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
@@ -134,6 +124,7 @@ public class CreateEvent extends AppCompatActivity {
         super.onActivityResult(requestCode,
                 resultCode,
                 data);
+
         // checking request code and result code
         // if request code is PICK_IMAGE_REQUEST and
         // resultCode is RESULT_OK
@@ -191,13 +182,14 @@ public class CreateEvent extends AppCompatActivity {
                                     // Dismiss dialog
                                     progressDialog.dismiss();
                                     Toast
-                                            .makeText(CreateEvent.this,
+                                            .makeText(CreatePost.this,
                                                     "Image Uploaded!!",
                                                     Toast.LENGTH_SHORT)
                                             .show();
 
                                 }
                             })
+
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
@@ -205,7 +197,7 @@ public class CreateEvent extends AppCompatActivity {
                             // Error, Image not uploaded
                             progressDialog.dismiss();
                             Toast
-                                    .makeText(CreateEvent.this,
+                                    .makeText(CreatePost.this,
                                             "Failed " + e.getMessage(),
                                             Toast.LENGTH_SHORT)
                                     .show();
@@ -228,13 +220,9 @@ public class CreateEvent extends AppCompatActivity {
                                 }
                             });
             return ref;
-        } else {
+        }
+        else{
             return null;
         }
     }
-
-    /*public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "datePicker");
-    }*/
 }
