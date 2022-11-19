@@ -19,11 +19,6 @@
             android:name=".caretaker.CaretakerAppliedEventsPage"
             android:exported="false" />
         <activity
-            android:name=".test.UpcomingEvents"
-            android:exported="false"
-            android:label="@string/title_activity_upcoming_events"
-            android:theme="@style/Theme.Application.NoActionBar" />
-        <activity
             android:name=".feed.Event_Details_Page"
             android:exported="false" />
         <activity
@@ -34,14 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".blog.HomePage_Blog"
-            android:exported="false">
-        </activity>
         <activity android:name=".blog.CreatePost"
             android:exported="false"/>
-        <activity android:name=".blog.DisplayImage" android:exported="false"/>
-        <activity android:name=".blog.UploadImage" android:exported="false"/>
         <service
             android:name="com.google.android.gms.measurement.AppMeasurementService"
             android:enabled="true"
@@ -72,7 +61,7 @@
         <activity
             android:name=".feed.CreateEvent"
             android:exported="false" />
-        <activity android:name="com.app3c.application.medicine.MedicineActivity" android:exported="false"></activity>
+        <activity android:name="com.app3c.application.medicine.MedicineActivity" android:exported="false"/>
         <activity android:name="com.app3c.application.addmedicine.AddMedicineActivity" />
         <activity android:name="com.app3c.application.alarm.ReminderActivity" />
         <activity android:name="com.app3c.application.report.MonthlyReportActivity" />
