@@ -1,5 +1,6 @@
 package com.app3c.application;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
@@ -7,6 +8,7 @@ import android.content.Context;
 
 public class MedicineApp extends Application {
 
+    @SuppressLint("StaticFieldLeak")
     private static Context mInstance;
 
 
