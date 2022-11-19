@@ -66,7 +66,6 @@ public class NGOLoginPage extends AppCompatActivity {
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
                                     startActivity(new Intent(NGOLoginPage.this, CreateEvent.class));
-                                    //startActivity(new Intent(NGOLoginPage.this, UpcomingEvents.class));
                                 }
                                 else{
                                     Context context = getApplicationContext();
