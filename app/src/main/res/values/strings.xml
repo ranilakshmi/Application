@@ -1,7 +1,24 @@
 <resources>
-    <string name="app_name">Application</string>
+    <string name="app_name">Geriatric Care Application</string>
     <string name="elderly">Elderly</string>
     <string name="caretaker">Caretaker</string>
     <string name="ngo">NGO</string>
     <string name="login">Login</string>
+    <string name="event_details">Lorem ipsum dolor sit amet. Ut odio volupta nesciuntid reprehendei accusantdae eos facere maitae eos quae rerum sed aliquid corrupti. Aut dolore voluptatum est accusantium voluptatem aut internos nobis et voluptas deserunt et laborum maiores. In adipisci eligendi in harum facere sit aspernatur recusandae sit earum aliquam in temporibus ullam eos illum voluptates quo cupiditate blanditiis. Ad dolores inventore non commodi dolore et quae velit aut error.</string>
+    <string name="firebaseurl">https://geriatric-care-66697-default-rtdb.firebaseio.com/</string>
+    <string name="title_activity_events_page">EventsPageActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_upcoming_events">UpcomingEvents</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="pick_date">Select Date</string>
+    <string name="choose">Choose</string>
+    <string name="upload">Upload</string>
 </resources>

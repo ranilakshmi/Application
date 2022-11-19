@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.app3c.application.caretaker.CaretakerLoginPage;
+import com.app3c.application.elderly.ElderlyLoginPage;
+import com.app3c.application.ngo.NGOLoginPage;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,19 +25,19 @@ public class MainActivity extends AppCompatActivity {
         ElderlyLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,ElderlyLoginPage.class));
+                startActivity(new Intent(MainActivity.this, ElderlyLoginPage.class));
             }
         });
         CaretakerLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,CaretakerLoginPage.class));
+                startActivity(new Intent(MainActivity.this, CaretakerLoginPage.class));
             }
         });
         NGOLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,NGOLoginPage.class));
+                startActivity(new Intent(MainActivity.this, NGOLoginPage.class));
             }
         });
     }

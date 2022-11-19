@@ -1,32 +1,25 @@
-package com.app3c.application.feed;
-
+package com.app3c.application.blog;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import com.app3c.application.R;
-import com.app3c.application.blog.CreatePost;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -35,90 +28,60 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.UUID;
 
-public class CreateEvent extends AppCompatActivity {
+public class UploadImage extends AppCompatActivity {
 
-    
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
+
+    // views for button
+    private Button btnSelect, btnUpload;
+
+    // view for image view
+    private ImageView imageView;
 
     // Uri indicates, where the image will be picked from
     private Uri filePath;
-    private ImageView imageView;
+
     // request code
     private final int PICK_IMAGE_REQUEST = 22;
+
     // instance for firebase storage and StorageReference
     FirebaseStorage storage;
     StorageReference storageReference;
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_event);
 
-        final EditText eventName = findViewById(R.id.event_name);
-        final EditText organizationName = findViewById(R.id.organization_name);
-        final EditText description = findViewById(R.id.event_description);
-        final EditText eventContact = findViewById(R.id.event_contact);
-        final EditText eventLocation = findViewById(R.id.event_location);
-        final Button RegisterBtn = findViewById(R.id.eventRegisterBtn);
-        final DatePicker datepicker = findViewById(R.id.datepicker);
-        CheckBox checkbox = findViewById(R.id.checkbox_image);
-        Button uploadImageButton = findViewById(R.id.uploadImageBtn);
-        imageView = findViewById(R.id.imageView);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_upload_image);
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(
+                Color.parseColor("#0F9D58"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
+        // initialise views
+        btnSelect = findViewById(R.id.btnChoose);
+        btnUpload = findViewById(R.id.btnUpload);
+        imageView = findViewById(R.id.imgView);
+
+        // get the Firebase  storage reference
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        uploadImageButton.setOnClickListener(new View.OnClickListener() {
+
+        // on pressing btnSelect SelectImage() is called
+        btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SelectImage();
             }
         });
 
-        RegisterBtn.setOnClickListener(new View.OnClickListener() {
+        // on pressing btnUpload uploadImage() is called
+        btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                final String EventName = eventName.getText().toString();
-                final String OrgName = organizationName.getText().toString();
-                final String desc = description.getText().toString();
-                final String contact = eventContact.getText().toString();
-                final String venue = eventLocation.getText().toString();
-                final int day = datepicker.getDayOfMonth();
-                final int month = datepicker.getMonth();
-                final int year = datepicker.getYear();
-
-                if (EventName.isEmpty() || desc.isEmpty()||contact.isEmpty()||OrgName.isEmpty()||venue.isEmpty()){
-                    Context context = getApplicationContext();
-                    CharSequence text = "Please enter all the details";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
-                else {
-                    Event_Post event_post = new Event_Post(EventName,OrgName,desc,contact,venue,day,month,year);
-                    StorageReference ref = uploadImage();
-                    event_post.setImageurl(ref.toString());
-                    FirebaseHelper helper = new FirebaseHelper(databaseReference);
-                    helper.save(event_post,"event");
-                    Context context = getApplicationContext();
-                    CharSequence text = "Event Registered";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                    finish();
-                }
+            public void onClick(View v) {
+                uploadImage();
             }
         });
-    }
-
-    public void onCheckboxClicked(View view) {
-        Button uploadImageButton = findViewById(R.id.uploadImageBtn);
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
-        if (checked){
-            uploadImageButton.setVisibility(View.VISIBLE);
-        }
-        else{
-            uploadImageButton.setVisibility(View.GONE);
-        }
     }
 
     // Select Image method
@@ -129,11 +92,13 @@ public class CreateEvent extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
     }
+
     // Override onActivityResult method
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,
                 resultCode,
                 data);
+
         // checking request code and result code
         // if request code is PICK_IMAGE_REQUEST and
         // resultCode is RESULT_OK
@@ -161,7 +126,9 @@ public class CreateEvent extends AppCompatActivity {
             }
         }
     }
-    private StorageReference uploadImage() {
+
+    // UploadImage method
+    private void uploadImage() {
         if (filePath != null) {
 
             // Code for showing progressDialog while uploading
@@ -191,13 +158,13 @@ public class CreateEvent extends AppCompatActivity {
                                     // Dismiss dialog
                                     progressDialog.dismiss();
                                     Toast
-                                            .makeText(CreateEvent.this,
+                                            .makeText(UploadImage.this,
                                                     "Image Uploaded!!",
                                                     Toast.LENGTH_SHORT)
                                             .show();
-
                                 }
                             })
+
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
@@ -205,7 +172,7 @@ public class CreateEvent extends AppCompatActivity {
                             // Error, Image not uploaded
                             progressDialog.dismiss();
                             Toast
-                                    .makeText(CreateEvent.this,
+                                    .makeText(UploadImage.this,
                                             "Failed " + e.getMessage(),
                                             Toast.LENGTH_SHORT)
                                     .show();
@@ -227,14 +194,6 @@ public class CreateEvent extends AppCompatActivity {
                                                     + (int) progress + "%");
                                 }
                             });
-            return ref;
-        } else {
-            return null;
         }
     }
-
-    /*public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "datePicker");
-    }*/
 }

@@ -16,6 +16,17 @@
         android:theme="@style/Theme.Application"
         tools:targetApi="31">
         <activity
+            android:name=".caretaker.CaretakerAppliedEventsPage"
+            android:exported="false" />
+        <activity
+            android:name=".test.UpcomingEvents"
+            android:exported="false"
+            android:label="@string/title_activity_upcoming_events"
+            android:theme="@style/Theme.Application.NoActionBar" />
+        <activity
+            android:name=".feed.Event_Details_Page"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -24,28 +35,35 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".blog.HomePage_Blog"
+            android:exported="false">
+        </activity>
+        <activity android:name=".blog.CreatePost"
+            android:exported="false"/>
+        <activity android:name=".blog.DisplayImage" android:exported="false"/>
+        <activity android:name=".blog.UploadImage" android:exported="false"/>
         <service
             android:name="com.google.android.gms.measurement.AppMeasurementService"
             android:enabled="true"
             android:exported="false" />
 
         <activity
-            android:name=".ElderlyLoginPage"
+            android:name=".elderly.ElderlyLoginPage"
             android:exported="false" />
         <activity
-            android:name=".CaretakerLoginPage"
+            android:name=".caretaker.CaretakerLoginPage"
             android:exported="false" />
         <activity
-            android:name=".NGOLoginPage"
+            android:name=".ngo.NGOLoginPage"
             android:exported="false" />
         <activity
-            android:name=".ElderlyRegistrationPage"
+            android:name=".elderly.ElderlyRegistrationPage"
             android:exported="false" />
         <activity
-            android:name=".CaretakerRegistrationPage"
+            android:name=".caretaker.CaretakerRegistrationPage"
             android:exported="false" />
         <activity
-            android:name=".NGORegistrationPage"
+            android:name=".ngo.NGORegistrationPage"
             android:exported="false" />
         <activity
             android:name=".feed.Event"
@@ -54,10 +72,6 @@
         <activity
             android:name=".feed.CreateEvent"
             android:exported="false" />
-        <activity android:name=".UploadImage" android:exported="false">
-        </activity>
-        <activity android:name=".DisplayImage"
-            android:exported="false">
-        </activity>
     </application>
+
 </manifest>

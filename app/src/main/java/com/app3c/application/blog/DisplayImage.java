@@ -1,4 +1,4 @@
-package com.app3c.application;
+package com.app3c.application.blog;
 
 import android.os.Bundle;
 import android.widget.ImageView;

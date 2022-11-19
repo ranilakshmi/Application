@@ -1,24 +1,33 @@
-package com.app3c.application;
+package com.app3c.application.blog;
 
+
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.app3c.application.R;
+import com.app3c.application.feed.Post;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -27,60 +36,79 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.UUID;
 
-public class UploadImage extends AppCompatActivity {
-
-
-    // views for button
-    private Button btnSelect, btnUpload;
-
-    // view for image view
-    private ImageView imageView;
-
+public class CreatePost extends AppCompatActivity {
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
     // Uri indicates, where the image will be picked from
     private Uri filePath;
-
+    private ImageView imageView;
     // request code
     private final int PICK_IMAGE_REQUEST = 22;
-
     // instance for firebase storage and StorageReference
     FirebaseStorage storage;
     StorageReference storageReference;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_image);
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(
-                Color.parseColor("#0F9D58"));
-        actionBar.setBackgroundDrawable(colorDrawable);
-
-        // initialise views
-        btnSelect = findViewById(R.id.btnChoose);
-        btnUpload = findViewById(R.id.btnUpload);
-        imageView = findViewById(R.id.imgView);
-
-        // get the Firebase  storage reference
+        setContentView(R.layout.activity_create_post);
+        EditText postTitle = findViewById(R.id.post_title);
+        CheckBox checkbox = findViewById(R.id.checkbox_image);
+        Button uploadImageButton = findViewById(R.id.uploadImageBtn);
+        imageView = findViewById(R.id.imageView);
+        EditText postContent = findViewById(R.id.post_content);
+        Button publishPostButton = findViewById(R.id.publishBtn);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
-        // on pressing btnSelect SelectImage() is called
-        btnSelect.setOnClickListener(new View.OnClickListener() {
+        uploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SelectImage();
             }
         });
 
-        // on pressing btnUpload uploadImage() is called
-        btnUpload.setOnClickListener(new View.OnClickListener() {
+        publishPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                uploadImage();
+            public void onClick(View view) {
+                StorageReference ref =  uploadImage();
+                publishPost(view,ref);
             }
         });
+
+    }
+
+    private void publishPost(View view,StorageReference ref) {
+        EditText PostTitle = findViewById(R.id.post_title);
+        EditText PostContent = findViewById(R.id.post_content);
+        String title = PostTitle.getText().toString();
+        String content = PostContent.getText().toString();
+        String imageurl = ref.toString();
+        BlogPost post = new BlogPost(title,content,imageurl);
+        databaseReference.child("posts").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Context context = getApplicationContext();
+                CharSequence text = "Success";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                finish();
+                databaseReference.child("post").push().setValue(post);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public void onCheckboxClicked(View view) {
+        Button uploadImageButton = findViewById(R.id.uploadImageBtn);
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+        if (checked){
+            uploadImageButton.setVisibility(View.VISIBLE);
+        }
+        else{
+            uploadImageButton.setVisibility(View.GONE);
+        }
     }
 
     // Select Image method
@@ -91,7 +119,6 @@ public class UploadImage extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
     }
-
     // Override onActivityResult method
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,
@@ -125,9 +152,7 @@ public class UploadImage extends AppCompatActivity {
             }
         }
     }
-
-    // UploadImage method
-    private void uploadImage() {
+    private StorageReference uploadImage() {
         if (filePath != null) {
 
             // Code for showing progressDialog while uploading
@@ -157,10 +182,11 @@ public class UploadImage extends AppCompatActivity {
                                     // Dismiss dialog
                                     progressDialog.dismiss();
                                     Toast
-                                            .makeText(UploadImage.this,
+                                            .makeText(CreatePost.this,
                                                     "Image Uploaded!!",
                                                     Toast.LENGTH_SHORT)
                                             .show();
+
                                 }
                             })
 
@@ -171,7 +197,7 @@ public class UploadImage extends AppCompatActivity {
                             // Error, Image not uploaded
                             progressDialog.dismiss();
                             Toast
-                                    .makeText(UploadImage.this,
+                                    .makeText(CreatePost.this,
                                             "Failed " + e.getMessage(),
                                             Toast.LENGTH_SHORT)
                                     .show();
@@ -193,6 +219,10 @@ public class UploadImage extends AppCompatActivity {
                                                     + (int) progress + "%");
                                 }
                             });
+            return ref;
+        }
+        else{
+            return null;
         }
     }
 }

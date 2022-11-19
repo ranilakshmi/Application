@@ -16,24 +16,26 @@
         <!--Button for choosing image from gallery-->
         <Button
             android:id="@+id/btnChoose"
-            android:text="Choose"
+            android:text="@string/choose"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <!--Button for uploading image-->
         <Button
             android:id="@+id/btnUpload"
-            android:text="Upload"
+            android:text="@string/upload"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
     <!--Image View for showing image chosen from gallery-->
     <ImageView
         android:id="@+id/imgView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

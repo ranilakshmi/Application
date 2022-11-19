@@ -1,6 +1,8 @@
 package com.app3c.application.feed;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
     String heading, subheading, detail;
 
     public Post() {
