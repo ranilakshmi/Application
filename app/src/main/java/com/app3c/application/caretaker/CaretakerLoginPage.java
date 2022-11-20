@@ -53,8 +53,7 @@ public class CaretakerLoginPage extends AppCompatActivity {
                 toast.show();
             }
             else{
-                databaseReference.child("caretaker");
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                databaseReference.child("caretaker").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         // Check if the phone number is already registered
@@ -70,17 +69,17 @@ public class CaretakerLoginPage extends AppCompatActivity {
                                 toast.show();
 
 
-                                //Intent intent = new Intent(CaretakerLoginPage.this, MedicineActivity.class);
+                                Intent intent = new Intent(CaretakerLoginPage.this, MedicineActivity.class);
                                 //Caretaker caretaker = new Caretaker(phonenumber);
                                 //intent.putExtra("caretaker",caretaker);
-                                //startActivity(intent);
-
+                                startActivity(intent);
+/*
                                 Intent intent = new Intent(CaretakerLoginPage.this, CaretakerAppliedEventsPage.class);
                                 Caretaker caretaker = new Caretaker(phonenumber);
                                 intent.putExtra("caretaker", caretaker);
                                 startActivity(intent);
 
-
+*/
                                 //TODO Go to the caretaker's main page
                                 //startActivity(new Intent(CaretakerLoginPage.this, CaretakerAppliedEventsPage.class));
 
