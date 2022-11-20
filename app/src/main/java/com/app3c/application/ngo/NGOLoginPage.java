@@ -13,11 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.app3c.application.R;
 import com.app3c.application.feed.CreateEvent;
-<<<<<<< HEAD
-//import com.app3c.application.test.UpcomingEvents;
-=======
 
->>>>>>> a418b71a105fbfd400f11aedfa214457b435034f
+//import com.app3c.application.test.UpcomingEvents;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -12,13 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app3c.application.R;
-<<<<<<< HEAD
+
 import com.app3c.application.elderly.Elderly;
 import com.app3c.application.elderly.ElderlyLoginPage;
 import com.app3c.application.feed.Event;
 import com.app3c.application.medicine.MedicineActivity;
-=======
->>>>>>> a418b71a105fbfd400f11aedfa214457b435034f
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,7 +53,8 @@ public class CaretakerLoginPage extends AppCompatActivity {
                 toast.show();
             }
             else{
-                databaseReference.child("caretaker").addListenerForSingleValueEvent(new ValueEventListener() {
+                databaseReference.child("caretaker");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         // Check if the phone number is already registered
@@ -62,39 +62,36 @@ public class CaretakerLoginPage extends AppCompatActivity {
                             // Get the password of the caretaker
                             String userpassword = Objects.requireNonNull(snapshot.child(phonenumber).child("password").getValue()).toString();
                             //Check if the entered password is correct
-                            if (password.equals(userpassword)){
+                            if (password.equals(userpassword)) {
                                 Context context = getApplicationContext();
                                 CharSequence text = "Success";
                                 int duration = Toast.LENGTH_SHORT;
                                 Toast toast = Toast.makeText(context, text, duration);
                                 toast.show();
 
-<<<<<<< HEAD
-                                    Intent intent = new Intent(CaretakerLoginPage.this, MedicineActivity.class);
-                                    //Caretaker caretaker = new Caretaker(phonenumber);
-                                    //intent.putExtra("caretaker",caretaker);
-                                    startActivity(intent);
-=======
+
+                                //Intent intent = new Intent(CaretakerLoginPage.this, MedicineActivity.class);
+                                //Caretaker caretaker = new Caretaker(phonenumber);
+                                //intent.putExtra("caretaker",caretaker);
+                                //startActivity(intent);
+
                                 Intent intent = new Intent(CaretakerLoginPage.this, CaretakerAppliedEventsPage.class);
                                 Caretaker caretaker = new Caretaker(phonenumber);
-                                intent.putExtra("caretaker",caretaker);
+                                intent.putExtra("caretaker", caretaker);
                                 startActivity(intent);
->>>>>>> a418b71a105fbfd400f11aedfa214457b435034f
 
 
                                 //TODO Go to the caretaker's main page
                                 //startActivity(new Intent(CaretakerLoginPage.this, CaretakerAppliedEventsPage.class));
 
-                            }
-                            else{
+                            } else {
                                 Context context = getApplicationContext();
                                 CharSequence text = "Incorrect password";
                                 int duration = Toast.LENGTH_SHORT;
                                 Toast toast = Toast.makeText(context, text, duration);
                                 toast.show();
                             }
-                        }
-                        else{
+                        } else {
                             Context context = getApplicationContext();
                             CharSequence text = "Incorrect phone number";
                             int duration = Toast.LENGTH_SHORT;
@@ -102,6 +99,7 @@ public class CaretakerLoginPage extends AppCompatActivity {
                             toast.show();
                         }
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
