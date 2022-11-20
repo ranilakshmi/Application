@@ -53,7 +53,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
         }
         holder.tvMedTime.setText(medicineAlarm.getStringTime());
         holder.tvMedicineName.setText(medicineAlarm.getPillName());
-        holder.tvDoseDetails.setText(medicineAlarm.getFormattedDose());
+        //holder.tvDoseDetails.setText(medicineAlarm.getFormattedDose());
         holder.ivAlarmDelete.setVisibility(View.VISIBLE);
         holder.ivAlarmDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,8 +78,8 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
         @BindView(R.id.tv_medicine_name)
         RobotoBoldTextView tvMedicineName;
 
-        @BindView(R.id.tv_dose_details)
-        RobotoRegularTextView tvDoseDetails;
+        //@BindView(R.id.tv_dose_details)
+        //RobotoRegularTextView tvDoseDetails;
 
         @BindView(R.id.iv_medicine_action)
         ImageView ivMedicineAction;

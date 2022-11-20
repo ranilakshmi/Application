@@ -211,14 +211,6 @@
                         android:text="1.0" />
 
 
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spinner_dose_units"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:entries="@array/medications_shape_array" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
