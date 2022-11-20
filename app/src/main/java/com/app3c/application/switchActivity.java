@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.app3c.application.blog.CreatePost;
+import com.app3c.application.elderly.Elderly;
+import com.app3c.application.feed.Event;
+
 import com.app3c.application.medicine.MedicineActivity;
 
 public class switchActivity extends AppCompatActivity {
@@ -30,15 +33,11 @@ public class switchActivity extends AppCompatActivity {
         feedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
                 Intent i = getIntent();
                 Elderly user = (Elderly) i.getSerializableExtra("user");
-                String username = user.getPhoneNo();
                 Intent intent = new Intent(switchActivity.this, Event.class);
-                intent.putExtra("user",u);
+                intent.putExtra("user",user);
                 startActivity(intent);
-
-                 */
             }
         });
 
@@ -48,9 +47,5 @@ public class switchActivity extends AppCompatActivity {
                 startActivity(new Intent(switchActivity.this, CreatePost.class));
             }
         });
-
     }
-
-
-
 }

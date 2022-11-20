@@ -60,6 +60,9 @@
         <activity
             android:name=".feed.CreateEvent"
             android:exported="false" />
+
+        <activity android:name=".switchActivity"
+            android:exported="false"/>
         <activity android:name="com.app3c.application.medicine.MedicineActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
         <activity android:name="com.app3c.application.addmedicine.AddMedicineActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
         <activity android:name="com.app3c.application.alarm.ReminderActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false" />
