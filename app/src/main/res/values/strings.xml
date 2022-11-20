@@ -4,7 +4,6 @@
     <string name="caretaker">Caretaker</string>
     <string name="ngo">NGO</string>
     <string name="login">Login</string>
-<<<<<<< HEAD
     <string name="event_details">Lorem ipsum dolor sit amet. Ut odio volupta nesciuntid reprehendei accusantdae eos facere maitae eos quae rerum sed aliquid corrupti. Aut dolore voluptatum est accusantium voluptatem aut internos nobis et voluptas deserunt et laborum maiores. In adipisci eligendi in harum facere sit aspernatur recusandae sit earum aliquam in temporibus ullam eos illum voluptates quo cupiditate blanditiis. Ad dolores inventore non commodi dolore et quae velit aut error.</string>
     <string name="firebaseurl">https://geriatric-care-66697-default-rtdb.firebaseio.com/</string>
     <string name="title_activity_events_page">EventsPageActivity</string>
@@ -14,15 +13,12 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="pick_date">Select Date</string>
     <string name="choose">Choose</string>
     <string name="upload">Upload</string>
-=======
     <string name="title_medicine_name">Medicine Name</string>
     <string name="hint_enter_med_name">Enter Medicine</string>
     <string name="medicine_days">Medicine Days</string>
@@ -49,5 +45,4 @@
     <string name="menu_stats">Monthly Report</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
->>>>>>> 02f3ef1c87543f9ccc327b9d2bf6f6f47ef78362
 </resources>

@@ -55,6 +55,10 @@
         android:layout_below="@id/label_event_venue"
         android:text="Date: "
         android:paddingHorizontal="25dp"/>
+    <TextView
+        android:id="@+id/imageurldetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <ImageView
         android:id="@+id/image1"
         android:layout_width="200dp"
