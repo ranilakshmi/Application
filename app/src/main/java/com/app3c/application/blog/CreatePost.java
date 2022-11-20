@@ -1,7 +1,5 @@
 package com.app3c.application.blog;
 
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.app3c.application.R;
-import com.app3c.application.feed.Post;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -50,14 +48,10 @@ public class CreatePost extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_post);
-        EditText postTitle = findViewById(R.id.post_title);
-        CheckBox checkbox = findViewById(R.id.checkbox_image);
+        //EditText postTitle = findViewById(R.id.post_title);
+        //CheckBox checkbox = findViewById(R.id.checkbox_image);
+
         Button uploadImageButton = findViewById(R.id.uploadImageBtn);
-        imageView = findViewById(R.id.imageView);
-        EditText postContent = findViewById(R.id.post_content);
-        Button publishPostButton = findViewById(R.id.publishBtn);
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
         uploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +59,13 @@ public class CreatePost extends AppCompatActivity {
             }
         });
 
+        imageView = findViewById(R.id.imageView);
+        //EditText postContent = findViewById(R.id.post_content);
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
+        Button publishPostButton = findViewById(R.id.publishBtn);
         publishPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +73,6 @@ public class CreatePost extends AppCompatActivity {
                 publishPost(view,ref);
             }
         });
-
     }
 
     private void publishPost(View view,StorageReference ref) {
@@ -101,7 +101,6 @@ public class CreatePost extends AppCompatActivity {
 
     public void onCheckboxClicked(View view) {
         Button uploadImageButton = findViewById(R.id.uploadImageBtn);
-        // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
         if (checked){
             uploadImageButton.setVisibility(View.VISIBLE);
@@ -126,9 +125,7 @@ public class CreatePost extends AppCompatActivity {
                 data);
 
         // checking request code and result code
-        // if request code is PICK_IMAGE_REQUEST and
-        // resultCode is RESULT_OK
-        // then set image in the image view
+        // if request code is PICK_IMAGE_REQUEST and resultCode is RESULT_OK then set image in the image view
         if (requestCode == PICK_IMAGE_REQUEST
                 && resultCode == RESULT_OK
                 && data != null
@@ -137,7 +134,6 @@ public class CreatePost extends AppCompatActivity {
             // Get the Uri of data
             filePath = data.getData();
             try {
-
                 // Setting image on image view using Bitmap
                 Bitmap bitmap = MediaStore
                         .Images

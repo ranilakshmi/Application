@@ -1,45 +1,25 @@
 package com.app3c.application.feed;
 
-
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import com.app3c.application.R;
-import com.app3c.application.blog.CreatePost;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
-import java.io.IOException;
-import java.util.UUID;
 
 public class CreateEvent extends AppCompatActivity {
-
-    
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
-
     // Uri indicates, where the image will be picked from
     private Uri filePath;
     private ImageView imageView;
@@ -47,7 +27,7 @@ public class CreateEvent extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 22;
     // instance for firebase storage and StorageReference
     FirebaseStorage storage;
-    StorageReference storageReference;
+    //StorageReference storageReference;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +38,11 @@ public class CreateEvent extends AppCompatActivity {
         final EditText description = findViewById(R.id.event_description);
         final EditText eventContact = findViewById(R.id.event_contact);
         final EditText eventLocation = findViewById(R.id.event_location);
-        final Button RegisterBtn = findViewById(R.id.eventRegisterBtn);
         final DatePicker datepicker = findViewById(R.id.datepicker);
+        /*
         CheckBox checkbox = findViewById(R.id.checkbox_image);
+
         Button uploadImageButton = findViewById(R.id.uploadImageBtn);
-        imageView = findViewById(R.id.imageView);
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
         uploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +50,13 @@ public class CreateEvent extends AppCompatActivity {
             }
         });
 
+        imageView = findViewById(R.id.image2);
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+         */
+
+        Button RegisterBtn = findViewById(R.id.eventRegisterBtn);
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,8 +79,25 @@ public class CreateEvent extends AppCompatActivity {
                 }
                 else {
                     Event_Post event_post = new Event_Post(EventName,OrgName,desc,contact,venue,day,month,year);
+                    /*
                     StorageReference ref = uploadImage();
-                    event_post.setImageurl(ref.toString());
+                    event_post.setImageurl(ref);
+                    databaseReference.child("event").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Context context = getApplicationContext();
+                            CharSequence text = "Success";
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                            finish();
+                            databaseReference.child("event").push().setValue(event_post);
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                     */
                     FirebaseHelper helper = new FirebaseHelper(databaseReference);
                     helper.save(event_post,"event");
                     Context context = getApplicationContext();
@@ -109,6 +111,7 @@ public class CreateEvent extends AppCompatActivity {
         });
     }
 
+    /*
     public void onCheckboxClicked(View view) {
         Button uploadImageButton = findViewById(R.id.uploadImageBtn);
         // Is the view now checked?
@@ -154,6 +157,10 @@ public class CreateEvent extends AppCompatActivity {
                         .getBitmap(
                                 getContentResolver(),
                                 filePath);
+                int width = 60;
+                int height = 60;
+                LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width,height);
+                imageView.setLayoutParams(parms);
                 imageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 // Log the exception
@@ -163,7 +170,6 @@ public class CreateEvent extends AppCompatActivity {
     }
     private StorageReference uploadImage() {
         if (filePath != null) {
-
             // Code for showing progressDialog while uploading
             ProgressDialog progressDialog
                     = new ProgressDialog(this);
@@ -176,6 +182,8 @@ public class CreateEvent extends AppCompatActivity {
                     .child(
                             "images/"
                                     + UUID.randomUUID().toString());
+
+            //url = ref.getDownloadUrl().toString();
 
             // adding listeners on upload
             // or failure of image
@@ -198,6 +206,7 @@ public class CreateEvent extends AppCompatActivity {
 
                                 }
                             })
+
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
@@ -228,13 +237,10 @@ public class CreateEvent extends AppCompatActivity {
                                 }
                             });
             return ref;
-        } else {
+        }
+        else {
             return null;
         }
     }
-
-    /*public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "datePicker");
-    }*/
+     */
 }
