@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.app3c.application.blog.CreatePost;
 import com.app3c.application.elderly.Elderly;
 import com.app3c.application.feed.Event;
+
 import com.app3c.application.medicine.MedicineActivity;
 
 public class switchActivity extends AppCompatActivity {
