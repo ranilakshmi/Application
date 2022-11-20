@@ -13,7 +13,6 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="pick_date">Select Date</string>
@@ -43,6 +42,4 @@
     <string name="no_taken_med_history">You have not taken any medicine</string>
     <string name="no_ignored_history">Well Done</string>
     <string name="menu_stats">Monthly Report</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 </resources>

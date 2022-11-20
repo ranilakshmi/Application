@@ -25,6 +25,9 @@
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/input_dialog.xml" value="0.1" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/model.xml" value="0.1" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/upload_image.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/layout/activity_medicine.xml" value="0.1413373860182371" />
+        <entry key="app/src/main/res/layout/fragment_add_medicine.xml" value="0.1875" />
+        <entry key="app/src/main/res/layout/fragment_medicine.xml" value="0.140625" />
       </map>
     </option>
   </component>
