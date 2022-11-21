@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.app3c.application.blog.Blog;
 import com.app3c.application.blog.CreatePost;
 import com.app3c.application.elderly.Elderly;
 import com.app3c.application.feed.Event;
@@ -43,7 +44,8 @@ public class switchActivity extends AppCompatActivity {
         blogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(switchActivity.this, CreatePost.class));
+                startActivity(new Intent(switchActivity.this,Blog.class));
+                //startActivity(new Intent(switchActivity.this, CreatePost.class));
             }
         });
     }

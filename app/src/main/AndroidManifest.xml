@@ -66,6 +66,9 @@
         <activity android:name="com.app3c.application.addmedicine.AddMedicineActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
         <activity android:name="com.app3c.application.alarm.ReminderActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false" />
         <activity android:name="com.app3c.application.report.MonthlyReportActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
+        <activity android:name=".blog.Blog" android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
     </application>
 
 </manifest>
