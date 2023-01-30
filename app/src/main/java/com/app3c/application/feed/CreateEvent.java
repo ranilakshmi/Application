@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class CreateEvent extends AppCompatActivity {
@@ -122,7 +123,9 @@ public class CreateEvent extends AppCompatActivity {
                             }
                         }
                         // set text on textView
-                        categoriestextview.setText(stringBuilder.toString());
+                        String text = stringBuilder.toString();
+                        categoriestextview.setText(text);
+
                     }
                 });
 
@@ -164,6 +167,8 @@ public class CreateEvent extends AppCompatActivity {
                 final int day = datepicker.getDayOfMonth();
                 final int month = datepicker.getMonth();
                 final int year = datepicker.getYear();
+                final String[] categories = categoriestextview.getText().toString().split(",");
+
 
                 if (EventName.isEmpty() || desc.isEmpty() || contact.isEmpty() || OrgName.isEmpty() || venue.isEmpty()) {
                     Context context = getApplicationContext();
@@ -174,6 +179,7 @@ public class CreateEvent extends AppCompatActivity {
                     toast.show();
                 } else {
                     Event_Post event_post = new Event_Post(EventName, OrgName, desc, contact, venue, day, month, year);
+                    event_post.setCategories(Arrays.asList(categories));
                     /*
                     StorageReference ref = uploadImage();
                     event_post.setImageurl(ref);

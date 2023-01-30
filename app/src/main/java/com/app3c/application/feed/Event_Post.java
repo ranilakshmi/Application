@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Event_Post extends Post{
+    int day,month,year;
+    String contact,venue,key,date,id;
+    List<String> volunteers,categories;
     public Event_Post(){
         super();
     }
@@ -18,22 +21,6 @@ public class Event_Post extends Post{
         this.contact = contact;
         this.venue = venue;
     }
-
-    int day,month,year;
-    String contact,venue,key,date;
-    String id;
-
-    List<String> volunteers;
-/*
-    public StorageReference getImageurl() {
-        return imageurl;
-    }
-
-    public void setImageurl(StorageReference imageurl) {
-        this.imageurl = imageurl;
-    }
-
-    StorageReference imageurl;*/
     public Event_Post(String heading,String subheading,String detail,String contact,String venue,int day,int month,int year){
         super(heading,subheading,detail);
         this.contact = contact;
@@ -70,9 +57,34 @@ public class Event_Post extends Post{
     public void setKey(String key){this.key = key;}
     public String getKey(){return this.key;}
     public String getDate() {
-        if (date == null){
+        if (date == null) {
             return "";
         }
         return date;
     }
+    public List<String> getVolunteers() {
+        return volunteers;
+    }
+
+    public void setVolunteers(List<String> volunteers) {
+        this.volunteers = volunteers;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
+    }
+    /*
+    public StorageReference getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(StorageReference imageurl) {
+        this.imageurl = imageurl;
+    }
+
+    StorageReference imageurl;*/
 }
