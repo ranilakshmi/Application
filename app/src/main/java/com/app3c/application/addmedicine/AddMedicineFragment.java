@@ -94,8 +94,8 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
     @BindView(R.id.tv_dose_quantity)
     EditText tvDoseQuantity;
 
-    @BindView(R.id.spinner_dose_units)
-    AppCompatSpinner spinnerDoseUnits;
+    //@BindView(R.id.spinner_dose_units)
+    //AppCompatSpinner spinnerDoseUnits;
 
     private List<String> doseUnitList;
 
@@ -134,7 +134,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
         rootView = inflater.inflate(R.layout.fragment_add_medicine, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         setCurrentTime();
-        setSpinnerDoseUnits();
+        //setSpinnerDoseUnits();
         return rootView;
     }
 
@@ -269,7 +269,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
 
         tvMedicineTime.setText(String.format(Locale.getDefault(), "%d:%d", hour, minute));
     }
-
+/*
     private void setSpinnerDoseUnits() {
         doseUnitList = Arrays.asList(getResources().getStringArray(R.array.medications_shape_array));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), android.R.layout.simple_dropdown_item_1line, doseUnitList);
@@ -285,7 +285,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
         doseUnit = doseUnitList.get(position);
         Log.d("TAG", doseUnit);
     }
-
+*/
     private View.OnClickListener setClickListener = new View.OnClickListener() {
 
         @Override
