@@ -91,6 +91,13 @@
             android:datePickerMode="spinner"
             android:calendarViewShown="false"
             />
+        <!-- text view to display selected items-->
+        <TextView
+            android:id="@+id/categoriesTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="Select Categories"/>
         <CheckBox
             android:id="@+id/checkbox_image"
             android:layout_width="wrap_content"
