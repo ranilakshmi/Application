@@ -4,10 +4,19 @@ public class BlogPost {
     public BlogPost() {
     }
 
+    public BlogPost(String title,String content){
+        this.title = title;
+        this.content = content;
+    }
+
     public BlogPost(String title, String content, String imageurl) {
         this.title = title;
         this.content = content;
         this.imageurl = imageurl;
+    }
+
+    public BlogPost(String title,String username,String content,String DateTime){
+
     }
 
     String title;
