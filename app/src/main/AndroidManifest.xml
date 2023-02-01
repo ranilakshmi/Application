@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Application"
         tools:targetApi="31">
         <activity
+            android:name=".userProfile"
+            android:exported="false" />
+        <activity
             android:name=".caretaker.CaretakerAppliedEventsPage"
             android:exported="false" />
         <activity
@@ -22,14 +25,17 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".blog.CreatePost"
-            android:exported="false"/>
+        <activity
+            android:name=".blog.CreatePost"
+            android:exported="false" />
+
         <service
             android:name="com.google.android.gms.measurement.AppMeasurementService"
             android:enabled="true"
@@ -60,13 +66,25 @@
         <activity
             android:name=".feed.CreateEvent"
             android:exported="false" />
-
-        <activity android:name=".switchActivity"
-            android:exported="false"/>
-        <activity android:name="com.app3c.application.medicine.MedicineActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
-        <activity android:name="com.app3c.application.addmedicine.AddMedicineActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
-        <activity android:name="com.app3c.application.alarm.ReminderActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false" />
-        <activity android:name="com.app3c.application.report.MonthlyReportActivity" android:theme="@style/AppTheme.NoActionBar" android:exported="false"/>
+        <activity
+            android:name=".switchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".medicine.MedicineActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".addmedicine.AddMedicineActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".alarm.ReminderActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".report.MonthlyReportActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

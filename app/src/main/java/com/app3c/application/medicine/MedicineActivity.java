@@ -14,6 +14,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 
+import androidx.annotation.NonNull;
+
+import com.app3c.application.blog.CreatePost;
+import com.app3c.application.elderly.Elderly;
+import com.app3c.application.feed.Event;
+import com.app3c.application.switchActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -75,6 +84,7 @@ public class MedicineActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_medicine);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
@@ -116,6 +126,36 @@ public class MedicineActivity extends AppCompatActivity {
 
         //Create MedicinePresenter
         presenter = new MedicinePresenter(Injection.provideMedicineRepository(MedicineActivity.this), medicineFragment);
+
+        BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.medicine_box);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.event_icon:
+                        Intent i = getIntent();
+                        Elderly user = (Elderly) i.getSerializableExtra("user");
+                        Intent intent = new Intent(getApplicationContext(), Event.class);
+                        intent.putExtra("user",user);
+                        startActivity(intent);
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.medicine_box:
+                        return true;
+                    case R.id.blog_icon:
+                        startActivity(new Intent(getApplicationContext(), CreatePost.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+
+            }
+        });
+
     }
 
     @Override
@@ -153,4 +193,6 @@ public class MedicineActivity extends AppCompatActivity {
         isExpanded = !isExpanded;
         appBarLayout.setExpanded(isExpanded, true);
     }
+
+
 }

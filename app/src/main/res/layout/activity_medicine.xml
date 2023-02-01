@@ -55,36 +55,6 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
 
-                <RelativeLayout
-                    android:id="@+id/date_picker_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="?android:selectableItemBackground"
-                    android:gravity="center_vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/date_picker_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/white" />
-
-                    <ImageView
-                        android:id="@+id/date_picker_arrow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/date_picker_text_view"
-                        android:layout_toRightOf="@id/date_picker_text_view"
-                        app:srcCompat="@drawable/ic_arrow_drop_down"
-                        tools:ignore="ContentDescription,RtlHardcoded" />
-
-                </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -95,15 +65,60 @@
         android:id="@+id/contentFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+        <RelativeLayout
+            android:id="@+id/date_picker_button"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/date_picker_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/date_picker_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/date_picker_text_view"
+                android:layout_toRightOf="@id/date_picker_text_view"
+                app:srcCompat="@drawable/ic_arrow_drop_down"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+
+        </RelativeLayout>
+    </FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/sixteen_dp"
+        android:layout_margin="10dp"
         app:fabSize="normal"
         app:layout_anchor="@id/contentFrame"
         app:layout_anchorGravity="bottom|right|end"
         app:srcCompat="@drawable/ic_add" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/teal_700"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:layout_anchorGravity="bottom|center_horizontal"
+        app:menu="@menu/menu_navigation" />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
