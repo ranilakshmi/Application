@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Application"
         tools:targetApi="31">
         <activity
-            android:name=".userProfile"
+            android:name=".elderly.UserProfile"
             android:exported="false" />
         <activity
             android:name=".caretaker.CaretakerAppliedEventsPage"
@@ -25,7 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -66,6 +66,7 @@
         <activity
             android:name=".feed.CreateEvent"
             android:exported="false" />
+
         <activity
             android:name=".switchActivity"
             android:exported="false" />
@@ -85,6 +86,11 @@
             android:name=".report.MonthlyReportActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".blog.Blog" android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
     </application>
 
 </manifest>

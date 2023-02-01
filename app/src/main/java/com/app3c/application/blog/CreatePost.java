@@ -69,19 +69,22 @@ public class CreatePost extends AppCompatActivity {
         publishPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StorageReference ref =  uploadImage();
-                publishPost(view,ref);
+                //StorageReference ref =  uploadImage();
+                //publishPost(view,ref);
+                publishPost(view);
             }
         });
     }
-
-    private void publishPost(View view,StorageReference ref) {
+    private void publishPost(View view)
+    {
+        //private void publishPost(View view,StorageReference ref) {
         EditText PostTitle = findViewById(R.id.post_title);
         EditText PostContent = findViewById(R.id.post_content);
         String title = PostTitle.getText().toString();
         String content = PostContent.getText().toString();
-        String imageurl = ref.toString();
-        BlogPost post = new BlogPost(title,content,imageurl);
+        BlogPost post = new BlogPost(title,content);
+        //String imageurl = ref.toString();
+        //BlogPost post = new BlogPost(title,content,imageurl);
         databaseReference.child("posts").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

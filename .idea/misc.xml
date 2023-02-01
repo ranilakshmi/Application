@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_blog.xml" value="0.2890625" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_blog_homepage.xml" value="0.16485507246376813" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_caretaker_applied_events_page.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_caretaker_login.xml" value="0.12993920972644377" />
@@ -21,6 +22,7 @@
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_ngo_register.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_switch.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/activity_upload_image.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/content_blog.xml" value="0.2427536231884058" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/dimens.xml" value="0.1" />
         <entry key="..\:/Users/indrajith/StudioProjects/Application/app/src/main/res/layout/fragment_events_page_n_g_o.xml" value="0.20416666666666666" />
