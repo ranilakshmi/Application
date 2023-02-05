@@ -55,6 +55,7 @@ public class Event_Post extends Post{
         this.volunteers = volunteers;
     }
 
+
     public void setContact(String contact){
         this.contact = contact;
     }

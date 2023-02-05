@@ -95,7 +95,7 @@ public class ElderlyLoginPage extends AppCompatActivity {
         ElderlyRegisterNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ElderlyLoginPage.this, MedicineActivity.class));
+                startActivity(new Intent(ElderlyLoginPage.this, ElderlyRegistrationPage.class));
             }
         });
     }

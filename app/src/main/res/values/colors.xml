@@ -11,5 +11,6 @@
     <color name="colorPrimary">#2196f3</color>
     <color name="colorPrimaryDark">#1976d2</color>
     <color name="color_light_grey">#4d4d4d</color>
+    <color name="purple">#8692f7</color>
     <drawable name="touchFeedback">#CFD8DC</drawable>
 </resources>
