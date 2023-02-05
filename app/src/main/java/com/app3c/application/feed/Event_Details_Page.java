@@ -86,9 +86,10 @@ public class Event_Details_Page extends AppCompatActivity {
                             String name = snapshot.child(phoneno).child("name").getValue().toString();
                             Context context = getApplicationContext();
 
+                            //TODO Store Volunteer details in firebase
                             //databaseReference.child("event").child(p.getKey()).child("volunteers").setValueAsync(phoneno);
-                            DatabaseReference newref = databaseReference.child("event").child(event.getKey()).child("volunteers").push();
-                            newref.setValue(phoneno);
+                            //DatabaseReference newref = databaseReference.child("event").child(event.getKey()).child("volunteers").push();
+                            //newref.setValue(phoneno);
 
                             DatabaseReference newappliedevent = databaseReference.child("user").child(phoneno).child("applied_events").push();
                             newappliedevent.setValue(event.getKey());

@@ -76,6 +76,7 @@ public class CaretakerRegistrationPage extends AppCompatActivity {
                                 Toast toast = Toast.makeText(context, text, duration);
                                 toast.show();
                             }
+
                             else{
                                 Context context = getApplicationContext();
                                 CharSequence text = "Caretaker Registered";

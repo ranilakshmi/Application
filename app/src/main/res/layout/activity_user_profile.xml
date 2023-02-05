@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".elderly.ElderlyRegistrationPage">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="User Profile"
+        android:fontFamily="sans-serif-condensed"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:text="Below are few events/activities. rate them out of 5 based on your interst in them"
+        android:fontFamily="sans-serif-condensed"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:text="1.educating students on environment"
+        android:fontFamily="sans-serif-condensed"/>
+
+    <EditText
+        android:id="@+id/rating1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="1/2/3/4/5"
+        android:inputType="number"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:text="2.activities for children for mental health andits importance"
+        android:fontFamily="sans-serif-condensed"/>
+
+    <EditText
+        android:id="@+id/rating2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="1/2/3/4/5"
+        android:inputType="number"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:text="3.clean up drive"
+        android:fontFamily="sans-serif-condensed"/>
+
+    <EditText
+        android:id="@+id/rating3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="1/2/3/4/5"
+        android:inputType="number"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submit_user_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp"
+        android:text="Submit"
+        />
+
+</LinearLayout>

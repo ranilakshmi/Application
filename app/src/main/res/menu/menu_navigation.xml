@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/event_icon"
+        android:title="Events"
+        android:icon="@drawable/event_icon"/>
+    <item
+        android:id="@+id/medicine_box"
+        android:title="Medicine"
+        android:icon="@drawable/medicine_box"/>
+
+    <item
+        android:id="@+id/blog_icon"
+        android:title="Blog"
+        android:icon="@drawable/blog_icon"/>
+
+</menu>

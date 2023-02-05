@@ -90,6 +90,7 @@ public class ElderlyRegistrationPage extends AppCompatActivity {
                                 databaseReference.child("user").child(phone).child("location").setValue(location);
                                 databaseReference.child("user").child(phone).child("password").setValue(password);
 
+                                startActivity(new Intent(ElderlyRegistrationPage.this,UserProfile.class));
                             }
                         }
 
