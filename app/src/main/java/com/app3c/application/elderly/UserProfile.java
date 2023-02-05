@@ -141,9 +141,6 @@ public class UserProfile extends AppCompatActivity {
             System.out.println(
                     "[" + entry.getKey()
                             + ", " + (entry.getValue() + movie_ratings.length) + "]");
-//            String msg = "[" + entry.getKey()
-//                    + ", " + (entry.getValue() + movie_ratings.length) + "]";
-//            Log.i("result", msg);
         }
         return msg;
     }
@@ -160,8 +157,7 @@ public class UserProfile extends AppCompatActivity {
 
         final Button submitbutton = findViewById(R.id.submit_user_profile);
         submitbutton.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
+                                            @Override public void onClick(View view) {
                                                 final int r1 = rating1.getInputType();
                                                 final int r2 = rating2.getInputType();
                                                 final int r3 = rating3.getInputType();
