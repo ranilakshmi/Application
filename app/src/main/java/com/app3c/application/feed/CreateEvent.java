@@ -1,6 +1,9 @@
 package com.app3c.application.feed;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -17,6 +21,9 @@ import com.app3c.application.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class CreateEvent extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
@@ -28,6 +35,10 @@ public class CreateEvent extends AppCompatActivity {
     // instance for firebase storage and StorageReference
     FirebaseStorage storage;
     //StorageReference storageReference;
+    TextView categoriestextview;
+    //StorageReference storageReference;	    //StorageReference storageReference;
+    boolean[] selectedCategories;
+    ArrayList<Integer> categoriesList = new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +66,93 @@ public class CreateEvent extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
          */
+
+        Resources res = getResources();
+        String[] categoriesArray = res.getStringArray(R.array.volunteering_categories);
+        // assign variable
+        categoriestextview = findViewById(R.id.categoriesTextView);
+
+        // initialize selected categories array
+        selectedCategories = new boolean[categoriesArray.length];
+
+        categoriestextview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Initialize alert dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(CreateEvent.this);
+
+                // set title
+                builder.setTitle("Select Categories");
+
+                // set dialog non cancelable
+                builder.setCancelable(false);
+
+                builder.setMultiChoiceItems(categoriesArray, selectedCategories, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                        // check condition
+                        if (b) {
+                            // when checkbox selected
+                            // Add position  in lang list
+                            categoriesList.add(i);
+                            // Sort array list
+                            Collections.sort(categoriesList);
+                        } else {
+                            // when checkbox unselected
+                            // Remove position from categoriesList
+                            categoriesList.remove(Integer.valueOf(i));
+                        }
+                    }
+                });
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Initialize string builder
+                        StringBuilder stringBuilder = new StringBuilder();
+                        // use for loop
+                        for (int j = 0; j < categoriesList.size(); j++) {
+                            // concat array value
+                            stringBuilder.append(categoriesArray[categoriesList.get(j)]);
+                            // check condition
+                            if (j != categoriesList.size() - 1) {
+                                // When j value  not equal
+                                // to lang list size - 1
+                                // add comma
+                                stringBuilder.append(", ");
+                            }
+                        }
+                        // set text on textView
+                        categoriestextview.setText(stringBuilder.toString());
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // dismiss dialog
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // use for loop
+                        for (int j = 0; j < selectedCategories.length; j++) {
+                            // remove all selection
+                            selectedCategories[j] = false;
+                            // clear language list
+                            categoriesList.clear();
+                            // clear text view value
+                            categoriestextview.setText("");
+                        }
+                    }
+                });
+                // show dialog
+                builder.show();
+            }
+        });
 
         Button RegisterBtn = findViewById(R.id.eventRegisterBtn);
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
