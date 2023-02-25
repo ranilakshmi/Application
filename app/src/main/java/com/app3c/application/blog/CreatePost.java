@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -32,6 +33,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.UUID;
 
 public class CreatePost extends AppCompatActivity {
@@ -44,6 +47,12 @@ public class CreatePost extends AppCompatActivity {
     // instance for firebase storage and StorageReference
     FirebaseStorage storage;
     StorageReference storageReference;
+
+    String dateTime;
+    Calendar calendar;
+    SimpleDateFormat simpleDateFormat;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +84,14 @@ public class CreatePost extends AppCompatActivity {
             }
         });
     }
+    private String getDateAndTime(){
+        Long dateValueInLong = System.currentTimeMillis();
+        calendar = Calendar.getInstance();
+        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        dateTime = simpleDateFormat.format(calendar.getTime()).toString();
+        Log.i("datetime",dateTime);
+        return dateTime;
+    }
     private void publishPost(View view)
     {
         //private void publishPost(View view,StorageReference ref) {
@@ -82,7 +99,8 @@ public class CreatePost extends AppCompatActivity {
         EditText PostContent = findViewById(R.id.post_content);
         String title = PostTitle.getText().toString();
         String content = PostContent.getText().toString();
-        BlogPost post = new BlogPost(title,content);
+        String date = getDateAndTime();
+        BlogPost post = new BlogPost(title,content,date);
         //String imageurl = ref.toString();
         //BlogPost post = new BlogPost(title,content,imageurl);
         databaseReference.child("posts").addListenerForSingleValueEvent(new ValueEventListener() {
