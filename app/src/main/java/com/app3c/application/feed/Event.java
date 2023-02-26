@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class Event extends AppCompatActivity {
 
     DatabaseReference db;

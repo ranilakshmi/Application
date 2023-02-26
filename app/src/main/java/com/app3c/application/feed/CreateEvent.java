@@ -4,13 +4,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,23 +19,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.app3c.application.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class CreateEvent extends AppCompatActivity {
+
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
-    // Uri indicates, where the image will be picked from
-    private Uri filePath;
-    private ImageView imageView;
-    // request code
-    private final int PICK_IMAGE_REQUEST = 22;
-    // instance for firebase storage and StorageReference
-    FirebaseStorage storage;
-    //StorageReference storageReference;
-    TextView categoriestextview;
-    //StorageReference storageReference;	    //StorageReference storageReference;
+    TextView categoriesTextView;
     boolean[] selectedCategories;
     ArrayList<Integer> categoriesList = new ArrayList<>();
     @Override
@@ -50,32 +40,16 @@ public class CreateEvent extends AppCompatActivity {
         final EditText eventContact = findViewById(R.id.event_contact);
         final EditText eventLocation = findViewById(R.id.event_location);
         final DatePicker datepicker = findViewById(R.id.datepicker);
-        /*
-        CheckBox checkbox = findViewById(R.id.checkbox_image);
-
-        Button uploadImageButton = findViewById(R.id.uploadImageBtn);
-        uploadImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SelectImage();
-            }
-        });
-
-        imageView = findViewById(R.id.image2);
-
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
-         */
 
         Resources res = getResources();
         String[] categoriesArray = res.getStringArray(R.array.volunteering_categories);
         // assign variable
-        categoriestextview = findViewById(R.id.categoriesTextView);
+        categoriesTextView = findViewById(R.id.categoriesTextView);
 
         // initialize selected categories array
         selectedCategories = new boolean[categoriesArray.length];
 
-        categoriestextview.setOnClickListener(new View.OnClickListener() {
+        categoriesTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -124,7 +98,7 @@ public class CreateEvent extends AppCompatActivity {
                             }
                         }
                         // set text on textView
-                        categoriestextview.setText(stringBuilder.toString());
+                        categoriesTextView.setText(stringBuilder.toString());
                     }
                 });
 
@@ -145,7 +119,7 @@ public class CreateEvent extends AppCompatActivity {
                             // clear language list
                             categoriesList.clear();
                             // clear text view value
-                            categoriestextview.setText("");
+                            categoriesTextView.setText("");
                         }
                     }
                 });
@@ -167,6 +141,9 @@ public class CreateEvent extends AppCompatActivity {
                 final int month = datepicker.getMonth();
                 final int year = datepicker.getYear();
 
+                final String categories = categoriesTextView.getText().toString();
+
+
                 if (EventName.isEmpty() || desc.isEmpty()||contact.isEmpty()||OrgName.isEmpty()||venue.isEmpty()){
                     Context context = getApplicationContext();
                     CharSequence text = "Please enter all the details";
@@ -176,10 +153,53 @@ public class CreateEvent extends AppCompatActivity {
                     toast.show();
                 }
                 else {
-                    Event_Post event_post = new Event_Post(EventName,OrgName,desc,contact,venue,day,month,year);
-                    /*
+                    String date = String.valueOf(day + '-' + month + '-' + year);
+                    Event_Post event_post = new Event_Post(EventName,OrgName,desc,contact,venue,date,categories);
+                    FirebaseHelper helper = new FirebaseHelper(databaseReference);
+                    helper.save(event_post,"event");
+                    Context context = getApplicationContext();
+                    CharSequence text = "Event Registered";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    finish();
+                }
+            }
+        });
+    }
+
+
+}
+
+//    // Uri indicates, where the image will be picked from
+//    private Uri filePath;
+//    private ImageView imageView;
+//    // request code
+//    private final int PICK_IMAGE_REQUEST = 22;
+//    // instance for firebase storage and StorageReference
+//    FirebaseStorage storage;
+//    //StorageReference storageReference;
+
+/*
+        CheckBox checkbox = findViewById(R.id.checkbox_image);
+
+        Button uploadImageButton = findViewById(R.id.uploadImageBtn);
+        uploadImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SelectImage();
+            }
+        });
+
+        imageView = findViewById(R.id.image2);
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+         */
+
+ /*
                     StorageReference ref = uploadImage();
-                    event_post.setImageurl(ref);
+                    event_post.setImageUrl(ref);
                     databaseReference.child("event").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -196,20 +216,8 @@ public class CreateEvent extends AppCompatActivity {
                         }
                     });
                      */
-                    FirebaseHelper helper = new FirebaseHelper(databaseReference);
-                    helper.save(event_post,"event");
-                    Context context = getApplicationContext();
-                    CharSequence text = "Event Registered";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                    finish();
-                }
-            }
-        });
-    }
 
-    /*
+/*
     public void onCheckboxClicked(View view) {
         Button uploadImageButton = findViewById(R.id.uploadImageBtn);
         // Is the view now checked?
@@ -257,8 +265,8 @@ public class CreateEvent extends AppCompatActivity {
                                 filePath);
                 int width = 60;
                 int height = 60;
-                LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width,height);
-                imageView.setLayoutParams(parms);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width,height);
+                imageView.setLayoutParams(params);
                 imageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 // Log the exception
@@ -341,4 +349,3 @@ public class CreateEvent extends AppCompatActivity {
         }
     }
      */
-}
