@@ -6,17 +6,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app3c.application.R;
-import com.app3c.application.caretaker.CaretakerLoginPage;
-import com.app3c.application.caretaker.CaretakerRegistrationPage;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -44,7 +40,7 @@ public class UserProfile extends AppCompatActivity {
                 //System.out.println(movies.get(i+1)[j]
                 //+genres[k]);
                 //System.out.println(i+" "+j+" "+k);
-                if (movies.get(i + 1)[j] == genres[k]) {
+                if (movies.get(i + 1)[j].equals(genres[k])) {
                     matrix[i - start][k] = 1;
                     k++;
                     j++;

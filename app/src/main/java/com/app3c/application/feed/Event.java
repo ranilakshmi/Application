@@ -51,16 +51,28 @@ public class Event extends AppCompatActivity {
         //Display details of current user
         Intent i = getIntent();
         Elderly user = (Elderly) i.getSerializableExtra("user");
-        String username = user.getPhoneNo();
+        String userContact = user.getPhoneNo();
+
+        ArrayList<Event_Post> all_events =  helper.retrieve();
+
+        ArrayList<Event_Post> completed_events =  helper.retrieve_completed_events();
+        ArrayList<Event_Post> upcoming_events = helper.retrieve_upcoming_events();
+
+        //ArrayList<String> previous_event_ids =  helper.retrieve_registered_events(userContact);
+        //ArrayList<Event_Post> previous_events = helper.retrieve_previous_events(userContact);
+        //ArrayList<Event_Post> recommended_events =  helper.retrieve();
+        // TODO: recommend function should be added here
+        // ArrayList <Event_Post> recommended_events = recommend(all_events,previous_events)
 
         //ADAPTER
-        adapter = new CustomAdapter(this, helper.retrieve(),user);
+        //adapter = new CustomAdapter(this,completed_events,user);
+        adapter = new CustomAdapter(this,upcoming_events,user);
+        //adapter = new CustomAdapter(this,recommended_events ,user);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // TODO Auto-generated method stub
                 Event_Post p = (Event_Post) adapter.getItem(position);
                 String value = p.getHeading();
                 Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
