@@ -17,7 +17,7 @@ public class MedicinesLocalDataSource implements MedicineDataSource {
 
     private static MedicinesLocalDataSource mInstance;
 
-    private MedicineDBHelper mDbHelper;
+    private final MedicineDBHelper mDbHelper;
 
 
     private MedicinesLocalDataSource(Context context) {

@@ -18,9 +18,9 @@ public class AddMedicinePresenter implements AddMedicineContract.Presenter, Medi
 
     private final AddMedicineContract.View mAddMedicineView;
 
-    private int mMedicineId;
+    private final int mMedicineId;
 
-    private boolean mIsDataMissing;
+    private final boolean mIsDataMissing;
 
     public AddMedicinePresenter(int mMedicineId, @NonNull MedicineRepository mMedicineRepository, AddMedicineContract.View mAddMedicineView, boolean mIsDataMissing) {
         this.mMedicineId = mMedicineId;

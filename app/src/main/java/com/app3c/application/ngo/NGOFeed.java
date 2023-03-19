@@ -1,20 +1,22 @@
-package com.app3c.application.feed;
+package com.app3c.application.ngo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import com.app3c.application.R;
-import com.app3c.application.elderly.Elderly;
-import com.app3c.application.elderly.RecommendationSystemThread;
+import com.app3c.application.blog.Blog;
+import com.app3c.application.blog.CreatePost;
+import com.app3c.application.feed.CreateEvent;
+import com.app3c.application.feed.CustomAdapter;
+import com.app3c.application.feed.Event_Post;
+import com.app3c.application.feed.FirebaseHelper;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,10 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
-public class Event extends AppCompatActivity {
+public class NGOFeed extends AppCompatActivity {
 
     DatabaseReference db;
     FirebaseHelper helper;
@@ -35,11 +35,19 @@ public class Event extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_ngo_feed);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
-        lv = (ListView) findViewById(R.id.lv);
+        Button neweventbtn = findViewById(R.id.neweventbtn);
+        neweventbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(NGOFeed.this, CreateEvent.class));
+            }
+        });
+
+        lv = (ListView) findViewById(R.id.lv2);
 
         //INITIALIZE FIREBASE DB
 
@@ -48,44 +56,14 @@ public class Event extends AppCompatActivity {
 
         //Display details of current user
         Intent i = getIntent();
-        Elderly user = (Elderly) i.getSerializableExtra("user");
-        String userContact = user.getPhoneNo();
+        NGO ngo = (NGO) i.getSerializableExtra("ngo");
+        String username = ngo.getContact();
 
-        //ArrayList<Event_Post> all_events =  helper.retrieve();
-        //ArrayList<Event_Post> completed_events =  helper.retrieve_completed_events();
-        //ArrayList<Event_Post> upcoming_events = helper.retrieve_upcoming_events();
-        //ArrayList<String> previous_event_ids =  helper.retrieve_registered_events(userContact);
-        //ArrayList<Event_Post> previous_events = helper.retrieve_previous_events(userContact);
-        //ArrayList<Event_Post> recommended_events =  helper.retrieve();
-        // TODO: recommend function should be added here
-        ArrayList <Event_Post> recommended_events = new ArrayList<>();
-        helper.upcoming_events = new ArrayList<>();
-        helper.past_events = new ArrayList<>();
-        helper.isRegistered = new ArrayList<>();
-        helper.past = new HashMap<>();
-        helper.upcoming = new HashMap<>();
-        helper.retrieve_registered_events(userContact);
-        Boolean b = helper.retrieveByDate();
-//        for (Integer num: helper.isRegistered){
-//            Log.i("is_registered",Integer.toString(num));
-//        }
-//        Log.i("upcoming_events_size",Integer.toString(helper.upcoming.size()));
-//        Log.i("past_events_size",Integer.toString(helper.past.size()));
-     try {
-         RecommendationSystemThread r = new RecommendationSystemThread();
-         r.setHelper(helper);
-         r.setUser(userContact);
-         Thread t = new Thread(r);
-         t.run();
-         //recommended_events = helper.retrieve_recommended_events(userContact);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        helper.retrieve_event_id_ngo(username);
+        ArrayList<Event_Post> events  = helper.retrieve_events_ngo(username);
 
         //ADAPTER
-        //adapter = new CustomAdapter(this,completed_events,user);
-        //adapter = new CustomAdapter(this,upcoming_events,user);
-        adapter = new CustomAdapter(this,recommended_events ,user);
+        adapter = new CustomAdapter(this, events,ngo);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

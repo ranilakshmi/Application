@@ -88,7 +88,7 @@ public class CreatePost extends AppCompatActivity {
         Long dateValueInLong = System.currentTimeMillis();
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        dateTime = simpleDateFormat.format(calendar.getTime()).toString();
+        dateTime = simpleDateFormat.format(calendar.getTime());
         Log.i("datetime",dateTime);
         return dateTime;
     }

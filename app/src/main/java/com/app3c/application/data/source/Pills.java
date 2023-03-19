@@ -11,7 +11,7 @@ public class Pills {
 
     private long pillId;
 
-    private List<MedicineAlarm> medicineAlarms = new LinkedList<MedicineAlarm>();
+    private final List<MedicineAlarm> medicineAlarms = new LinkedList<MedicineAlarm>();
 
     public Pills(){
 

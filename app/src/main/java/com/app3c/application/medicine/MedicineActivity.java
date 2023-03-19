@@ -77,7 +77,7 @@ public class MedicineActivity extends AppCompatActivity {
 
     private MedicinePresenter presenter;
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd", /*Locale.getDefault()*/Locale.ENGLISH);
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd", /*Locale.getDefault()*/Locale.ENGLISH);
 
     private boolean isExpanded = false;
 
