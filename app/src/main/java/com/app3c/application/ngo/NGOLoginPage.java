@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app3c.application.R;
-import com.app3c.application.feed.CreateEvent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class NGOLoginPage extends AppCompatActivity {
 
-    
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
 
     @Override
@@ -29,14 +27,7 @@ public class NGOLoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ngo_login);
 
-        final TextView NGORegisterNow = findViewById(R.id.NGORegister);
         final Button loginBtn = findViewById(R.id.NGOLoginButton);
-        NGORegisterNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(NGOLoginPage.this, NGORegistrationPage.class));
-            }
-        });
         loginBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -64,7 +55,11 @@ public class NGOLoginPage extends AppCompatActivity {
                                     int duration = Toast.LENGTH_SHORT;
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
-                                    startActivity(new Intent(NGOLoginPage.this, NGOFeed.class));
+                                    //startActivity(new Intent(NGOLoginPage.this, CreateEvent.class));
+                                    Intent intent = new Intent(NGOLoginPage.this, NGOFeed.class);
+                                    NGO ngo = new NGO(contact);
+                                    intent.putExtra("ngo",ngo);
+                                    startActivity(intent);
                                 }
                                 else{
                                     Context context = getApplicationContext();
@@ -89,6 +84,14 @@ public class NGOLoginPage extends AppCompatActivity {
                         }
                     });
                 }
+            }
+        });
+
+        final TextView NGORegisterNow = findViewById(R.id.NGORegister);
+        NGORegisterNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(NGOLoginPage.this, NGORegistrationPage.class));
             }
         });
     }

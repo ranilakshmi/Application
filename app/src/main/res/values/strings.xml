@@ -43,10 +43,9 @@
     <string name="no_ignored_history">Well Done</string>
     <string name="menu_stats">Monthly Report</string>
     <string-array name="volunteering_categories">
-        <item>Children and Youth</item>
+        <item>Children</item>
         <item>Education</item>
         <item>Environment</item>
         <item>Health</item>
-        <item>Women\'s empowerment</item>
     </string-array>
 </resources>

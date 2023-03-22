@@ -1,227 +1,482 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_gravity="center"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/userprofile"
     tools:context=".elderly.ElderlyRegistrationPage">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:text="User Profile"
-        android:fontFamily="sans-serif-black"
-        android:shadowRadius="2"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:letterSpacing="0.1"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="18sp"
-        android:text="Below are few events/activities. Rate them out of 5 based on your interst in them"
-        android:fontFamily="sans-serif-condensed-medium"/>
-
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:textSize="18sp"
-        android:text="1.educating students on environment"
-        android:fontFamily="sans-serif-condensed"/>
-
-
-    <RadioGroup
-        android:layout_marginTop="0dp"
-        android:id="@+id/radioEvent1"
-        android:layout_marginLeft="10dp"
-        android:layout_width="fill_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-        <!-- In RadioGroup create the 1 Radio Button-->
-        <!-- like this we will add some more Radio Button-->
-
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp"
+        android:background="@drawable/custom_edittext">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/event1opt1"
-            android:text="1"
-            android:textSize="15sp"/>
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="24dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="User Profile"
+                android:id="@+id/loginText"
+                android:textSize="36sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/purple"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Below are few events/activities. rate them out of 5 based on your interst in them"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="40dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.educating students on environment"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:layout_marginTop="15dp"/>
+            <RadioGroup
+                android:layout_marginTop="0dp"
+                android:id="@+id/radioEvent1"
+                android:layout_marginLeft="10dp"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
 
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/event1opt2"
-            android:text="2"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/event1opt3"
-            android:text="3"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/event1opt4"
-            android:text="4"
-            android:textSize="15sp"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/event1opt5"
-            android:text="5"
-            android:textSize="15sp"/>
-
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="18sp"
-        android:text="2.activities for children for mental health andits importance"
-        android:fontFamily="sans-serif-condensed"/>
-
-    <RadioGroup
-        android:layout_marginTop="0dp"
-        android:id="@+id/radioEvent2"
-        android:layout_marginLeft="10dp"
-        android:layout_width="fill_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-        <!-- In RadioGroup create the 1 Radio Button-->
-        <!-- like this we will add some more Radio Button-->
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/event2opt1"
-            android:text="1"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/event2opt2"
-            android:text="2"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/event2opt3"
-            android:text="3"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/event2opt4"
-            android:text="4"
-            android:textSize="15sp"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/event2opt5"
-            android:text="5"
-            android:textSize="15sp"/>
-
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="18sp"
-        android:text="3.clean up drive"
-        android:fontFamily="sans-serif-condensed"/>
-
-    <RadioGroup
-        android:layout_marginTop="0dp"
-        android:id="@+id/radioEvent3"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <!-- In RadioGroup create the 1 Radio Button-->
-        <!-- like this we will add some more Radio Button-->
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/event3opt1"
-            android:text="1"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/event3opt2"
-            android:text="2"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/event3opt3"
-            android:text="3"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/event3opt4"
-            android:text="4"
-            android:textSize="15sp"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/event3opt5"
-            android:text="5"
-            android:textSize="15sp"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event1opt1"
+                    android:text="1"
+                    android:textSize="16sp"/>
 
 
-    </RadioGroup>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event1opt2"
+                    android:text="2"
+                    android:textSize="15sp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/submit_user_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="40dp"
-        android:text="Submit"
-        />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event1opt3"
+                    android:text="3"
+                    android:textSize="16sp"/>
 
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event1opt4"
+                    android:text="4"
+                    android:textSize="16sp"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event1opt5"
+                    android:text="5"
+                    android:textSize="16sp"/>
+
+            </RadioGroup>
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2.activities for children for mental health and its importance"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:layout_marginTop="15dp"/>
+            <RadioGroup
+                android:layout_marginTop="0dp"
+                android:id="@+id/radioEvent2"
+                android:layout_marginLeft="10dp"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event2opt1"
+                    android:text="1"
+                    android:textSize="15sp"/>
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event2opt2"
+                    android:text="2"
+                    android:textSize="15sp"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event2opt3"
+                    android:text="3"
+                    android:textSize="15sp"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event2opt4"
+                    android:text="4"
+                    android:textSize="15sp"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event2opt5"
+                    android:text="5"
+                    android:textSize="15sp"/>
+
+            </RadioGroup>
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3.clean up drive"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:layout_marginTop="10dp"/>
+            <RadioGroup
+                android:layout_marginTop="0dp"
+                android:id="@+id/radioEvent3"
+                android:layout_marginLeft="10dp"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event3opt1"
+                    android:text="1"
+                    android:textSize="15sp"/>
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event3opt2"
+                    android:text="2"
+                    android:textSize="15sp"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event3opt3opt3"
+                    android:text="3"
+                    android:textSize="15sp"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event3opt4"
+                    android:text="4"
+                    android:textSize="15sp"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event3opt5"
+                    android:text="5"
+                    android:textSize="15sp"/>
+
+            </RadioGroup>
+
+
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/submit_user_profile"
+                android:text="SUBMIT"
+                android:textSize="18sp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/purple"
+                app:cornerRadius = "20dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:orientation="vertical"-->
+<!--    android:layout_gravity="center"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".elderly.ElderlyRegistrationPage">-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="User Profile"-->
+<!--        android:fontFamily="sans-serif-black"-->
+<!--        android:shadowRadius="2"-->
+<!--        android:shadowDx="1"-->
+<!--        android:shadowDy="1"-->
+<!--        android:letterSpacing="0.1"-->
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="Below are few events/activities. Rate them out of 5 based on your interst in them"-->
+<!--        android:fontFamily="sans-serif-condensed-medium"/>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="1.educating students on environment"-->
+<!--        android:fontFamily="sans-serif-condensed"/>-->
+
+
+<!--    <RadioGroup-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:id="@+id/radioEvent1"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        &lt;!&ndash; In RadioGroup create the 1 Radio Button&ndash;&gt;-->
+<!--        &lt;!&ndash; like this we will add some more Radio Button&ndash;&gt;-->
+
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/event1opt1"-->
+<!--            android:text="1"-->
+<!--            android:textSize="15sp"/>-->
+
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/event1opt2"-->
+<!--            android:text="2"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/event1opt3"-->
+<!--            android:text="3"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/event1opt4"-->
+<!--            android:text="4"-->
+<!--            android:textSize="15sp"/>-->
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/event1opt5"-->
+<!--            android:text="5"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--    </RadioGroup>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="2.activities for children for mental health andits importance"-->
+<!--        android:fontFamily="sans-serif-condensed"/>-->
+
+<!--    <RadioGroup-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:id="@+id/radioEvent2"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        &lt;!&ndash; In RadioGroup create the 1 Radio Button&ndash;&gt;-->
+<!--        &lt;!&ndash; like this we will add some more Radio Button&ndash;&gt;-->
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/event2opt1"-->
+<!--            android:text="1"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/event2opt2"-->
+<!--            android:text="2"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/event2opt3"-->
+<!--            android:text="3"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/event2opt4"-->
+<!--            android:text="4"-->
+<!--            android:textSize="15sp"/>-->
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/event2opt5"-->
+<!--            android:text="5"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--    </RadioGroup>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="3.clean up drive"-->
+<!--        android:fontFamily="sans-serif-condensed"/>-->
+
+<!--    <RadioGroup-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:id="@+id/radioEvent3"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        &lt;!&ndash; In RadioGroup create the 1 Radio Button&ndash;&gt;-->
+<!--        &lt;!&ndash; like this we will add some more Radio Button&ndash;&gt;-->
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/event3opt1"-->
+<!--            android:text="1"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/event3opt2"-->
+<!--            android:text="2"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/event3opt3"-->
+<!--            android:text="3"-->
+<!--            android:textSize="15sp"/>-->
+
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/event3opt4"-->
+<!--            android:text="4"-->
+<!--            android:textSize="15sp"/>-->
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/event3opt5"-->
+<!--            android:text="5"-->
+<!--            android:textSize="15sp"/>-->
+
+
+<!--    </RadioGroup>-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/submit_user_profile"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:text="Submit"-->
+<!--        />-->
+
+<!--</LinearLayout>-->
