@@ -55,7 +55,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:contentDescription="@null"
-                android:src="@drawable/icon_blister" />
+                app:srcCompat="@drawable/icon_blister" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
                 android:layout_centerVertical="true"
                 android:contentDescription="@null"
                 android:visibility="gone"
-                android:src="@drawable/image_reminder_taken" />
+                app:srcCompat="@drawable/image_reminder_taken" />
 
             <ImageView
                 android:id="@+id/iv_alarm_delete"
@@ -102,7 +102,7 @@
                 android:layout_centerVertical="true"
                 android:contentDescription="@null"
                 android:visibility="gone"
-                android:src="@drawable/image_reminder_not_taken" />
+                app:srcCompat="@drawable/image_reminder_not_taken" />
         </RelativeLayout>
 
     </LinearLayout>

@@ -28,6 +28,7 @@ import java.util.Collections;
 
 public class CreateEvent extends AppCompatActivity {
 
+
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
     TextView categoriesTextView;
     boolean[] selectedCategories;
@@ -140,9 +141,9 @@ public class CreateEvent extends AppCompatActivity {
                 final String desc = description.getText().toString();
                 final String contact = eventContact.getText().toString();
                 final String venue = eventLocation.getText().toString();
-                final int day = datepicker.getDayOfMonth();
-                final int month = datepicker.getMonth();
-                final int year = datepicker.getYear();
+                final String day = Integer.toString(datepicker.getDayOfMonth());
+                final String month = Integer.toString(datepicker.getMonth());
+                final String year = Integer.toString(datepicker.getYear());
 
                 final String categories = categoriesTextView.getText().toString();
 
@@ -156,7 +157,7 @@ public class CreateEvent extends AppCompatActivity {
                     toast.show();
                 }
                 else {
-                    String date = String.valueOf(day + '-' + month + '-' + year);
+                    String date = day+ "-" + month + "-" + year;
                     Event_Post event_post = new Event_Post(EventName,OrgName,desc,contact,venue,date,categories);
                     FirebaseHelper helper = new FirebaseHelper(databaseReference);
                     helper.save(event_post,"event",contact);
