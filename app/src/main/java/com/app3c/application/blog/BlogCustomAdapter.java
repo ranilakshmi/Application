@@ -50,7 +50,8 @@ public class BlogCustomAdapter extends BaseAdapter {
         final BlogPost p = (BlogPost) this.getItem(position);
 
         headTxt.setText(p.getTitle());
-        subheadTxt.setVisibility(View.GONE);
+        subheadTxt.setText(p.getDate());
+        //subheadTxt.setVisibility(View.GONE);
         detailTxt.setText(p.getContent());
         return convertView;
     }
