@@ -13,6 +13,8 @@ import com.app3c.application.caretaker.Caretaker;
 import com.app3c.application.elderly.Elderly;
 import com.app3c.application.elderly.ElderlyLoginPage;
 import com.app3c.application.elderly.ElderlyRegistrationPage;
+import com.app3c.application.ngo.NGO;
+import com.app3c.application.ngo.NGOFeed;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class CustomAdapter extends BaseAdapter {
     ArrayList<Event_Post> Posts;
     Elderly user;
     Caretaker caretaker;
+    NGO ngo;
 
     public CustomAdapter(Context c, ArrayList<Event_Post> Posts) {
         this.c = c;
@@ -36,6 +39,13 @@ public class CustomAdapter extends BaseAdapter {
         this.Posts = Posts;
         this.caretaker = caretaker;
     }
+
+    public CustomAdapter(Context c, ArrayList<Event_Post> posts, NGO ngo) {
+        this.c = c;
+        this.Posts = posts;
+        this.ngo = ngo;
+    }
+
     @Override
     public int getCount() {
         return Posts.size();

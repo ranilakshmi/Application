@@ -56,14 +56,18 @@
         android:text="Date: "
         android:paddingHorizontal="25dp"/>
     <TextView
-        android:id="@+id/imageurldetails"
+        android:id="@+id/text_event_categories"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_event_date"
+        android:layout_marginVertical="10dp"
+        android:layout_centerHorizontal="true"
+        />
     <ImageView
         android:id="@+id/image1"
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:layout_below="@id/label_event_date"
+        android:layout_below="@id/text_event_categories"
         android:layout_marginVertical="10dp"
         android:layout_centerHorizontal="true"
         android:visibility="gone"

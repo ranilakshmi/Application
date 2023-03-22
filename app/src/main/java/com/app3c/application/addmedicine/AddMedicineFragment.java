@@ -99,7 +99,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
 
     private List<String> doseUnitList;
 
-    private boolean[] dayOfWeekList = new boolean[7];
+    private final boolean[] dayOfWeekList = new boolean[7];
 
     private int hour, minute;
 
@@ -286,7 +286,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
         Log.d("TAG", doseUnit);
     }
 */
-    private View.OnClickListener setClickListener = new View.OnClickListener() {
+    private final View.OnClickListener setClickListener = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
