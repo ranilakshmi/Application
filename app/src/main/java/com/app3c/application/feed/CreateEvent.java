@@ -21,6 +21,25 @@ import com.app3c.application.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.Collections;
+
+//public class CreateEvent extends AppCompatActivity {
+    // request code
+    //private final int PICK_IMAGE_REQUEST = 22;
+  //  DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
+    // instance for firebase storage and StorageReference
+    //FirebaseStorage storage;
+    //TextView categoriestextview;
+    //StorageReference storageReference;
+    //boolean[] selectedCategories;
+    //ArrayList<Integer> categoriesList = new ArrayList<>();
+    // Uri indicates, where the image will be picked from
+    //private Uri filePath;
+    //private ImageView imageView;
+
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -132,6 +151,96 @@ public class CreateEvent extends AppCompatActivity {
             }
         });
 
+
+        Resources res = getResources();
+        String[] categoriesArray = res.getStringArray(R.array.volunteering_categories);
+        // assign variable
+        categoriestextview = findViewById(R.id.categoriesTextView);
+
+        // initialize selected categories array
+        selectedCategories = new boolean[categoriesArray.length];
+
+        categoriestextview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Initialize alert dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(CreateEvent.this);
+
+                // set title
+                builder.setTitle("Select Categories");
+
+                // set dialog non cancelable
+                builder.setCancelable(false);
+
+                builder.setMultiChoiceItems(categoriesArray, selectedCategories, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                        // check condition
+                        if (b) {
+                            // when checkbox selected
+                            // Add position  in lang list
+                            categoriesList.add(i);
+                            // Sort array list
+                            Collections.sort(categoriesList);
+                        } else {
+                            // when checkbox unselected
+                            // Remove position from categoriesList
+                            categoriesList.remove(Integer.valueOf(i));
+                        }
+                    }
+                });
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Initialize string builder
+                        StringBuilder stringBuilder = new StringBuilder();
+                        // use for loop
+                        for (int j = 0; j < categoriesList.size(); j++) {
+                            // concat array value
+                            stringBuilder.append(categoriesArray[categoriesList.get(j)]);
+                            // check condition
+                            if (j != categoriesList.size() - 1) {
+                                // When j value  not equal
+                                // to lang list size - 1
+                                // add comma
+                                stringBuilder.append(", ");
+                            }
+                        }
+                        // set text on textView
+                        String text = stringBuilder.toString();
+                        categoriestextview.setText(text);
+
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // dismiss dialog
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // use for loop
+                        for (int j = 0; j < selectedCategories.length; j++) {
+                            // remove all selection
+                            selectedCategories[j] = false;
+                            // clear language list
+                            categoriesList.clear();
+                            // clear text view value
+                            categoriestextview.setText("");
+                        }
+                    }
+                });
+                // show dialog
+                builder.show();
+            }
+        });
+
         Button RegisterBtn = findViewById(R.id.eventRegisterBtn);
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,7 +257,7 @@ public class CreateEvent extends AppCompatActivity {
                 final String categories = categoriesTextView.getText().toString();
 
 
-                if (EventName.isEmpty() || desc.isEmpty()||contact.isEmpty()||OrgName.isEmpty()||venue.isEmpty()){
+                if (EventName.isEmpty() || desc.isEmpty() || contact.isEmpty() || OrgName.isEmpty() || venue.isEmpty()) {
                     Context context = getApplicationContext();
                     CharSequence text = "Please enter all the details";
                     int duration = Toast.LENGTH_SHORT;
@@ -220,6 +329,18 @@ public class CreateEvent extends AppCompatActivity {
                         }
                     });
                      */
+                    FirebaseHelper helper = new FirebaseHelper(databaseReference);
+                    helper.save(event_post, "event");
+                    Context context = getApplicationContext();
+                    CharSequence text = "Event Registered";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    finish();
+                }
+            }
+        });
+    }
 
 /*
     public void onCheckboxClicked(View view) {

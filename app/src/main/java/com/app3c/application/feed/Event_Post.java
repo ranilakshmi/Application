@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Event_Post extends Post{
+    int day,month,year;
+    String contact,venue,key,date,id;
+    List<String> volunteers,categories;
     public Event_Post(){
         super();
     }
@@ -24,6 +27,15 @@ public class Event_Post extends Post{
         this.date = date;
         this.categories = categories;
     }
+    public Event_Post(String heading,String subheading,String detail,String contact,String venue,int day,int month,int year){
+        super(heading,subheading,detail);
+        this.contact = contact;
+        this.venue = venue;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.date = String.valueOf(day) +"-" + String.valueOf(month)+ "-" + String.valueOf(year);
+        }
 
 
     String contact,venue,key,date;
@@ -73,12 +85,37 @@ public class Event_Post extends Post{
 
 
     public String getDate() {
-        if (date == null){
+        if (date == null) {
             return "";
         }
         return date;
     }
+    public List<String> getVolunteers() {
+        return volunteers;
+    }
+
+    public void setVolunteers(List<String> volunteers) {
+        this.volunteers = volunteers;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
+    }
+    /*
+    public StorageReference getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(StorageReference imageurl) {
+        this.imageurl = imageurl;
+    }
+
+    StorageReference imageurl;*/
     public void setDate(String date){
         this.date = date;
-    }
+        }
 }

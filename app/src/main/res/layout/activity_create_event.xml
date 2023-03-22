@@ -158,6 +158,52 @@
 </LinearLayout>
 
 
+        <DatePicker
+            android:id="@+id/datepicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            />
+        <!-- text view to display selected items-->
+        <TextView
+            android:id="@+id/categoriesTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="Select Categories"/>
+        <CheckBox
+            android:id="@+id/checkbox_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Include Image"
+            android:gravity="center_horizontal"
+            android:onClick="onCheckboxClicked"
+            android:visibility="gone"
+            />
+        <Button
+            android:id="@+id/uploadImageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload Image"
+            android:visibility="gone"
+            />
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/eventRegisterBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="40dp"
+            android:text="Register"
+            />
+    </LinearLayout>
+</ScrollView>
     <!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<ScrollView-->
 <!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
