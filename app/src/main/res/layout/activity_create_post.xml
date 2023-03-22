@@ -47,6 +47,13 @@
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
+            <ImageView
+                android:id="@+id/iv_mic_title"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_mic"
+                 />
             <CheckBox
                 android:id="@+id/checkbox_image"
                 android:text="Include Image"
@@ -82,6 +89,13 @@
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
+            <ImageView
+                android:id="@+id/iv_mic_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_mic"
+                />
 
             <Button
                 android:layout_width="match_parent"

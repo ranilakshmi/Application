@@ -7,12 +7,14 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,7 +36,10 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.UUID;
 
 public class CreatePost extends AppCompatActivity {
@@ -42,6 +47,12 @@ public class CreatePost extends AppCompatActivity {
     // Uri indicates, where the image will be picked from
     private Uri filePath;
     private ImageView imageView;
+    private ImageView iv_mic_title;
+    private ImageView iv_mic_content;
+    private TextView title;
+    private TextView content;
+    private static final int REQUEST_CODE_SPEECH_INPUT_TITLE = 1;
+    private static final int REQUEST_CODE_SPEECH_INPUT_CONTENT = 2;
     // request code
     private final int PICK_IMAGE_REQUEST = 22;
     // instance for firebase storage and StorageReference
@@ -60,12 +71,67 @@ public class CreatePost extends AppCompatActivity {
         //EditText postTitle = findViewById(R.id.post_title);
         //CheckBox checkbox = findViewById(R.id.checkbox_image);
 
+        iv_mic_title = findViewById(R.id.iv_mic_title);
+        iv_mic_content = findViewById(R.id.iv_mic_content);
+        title = findViewById(R.id.post_title);
+        content = findViewById(R.id.post_content);
+
+        iv_mic_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent
+                        = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
+                        Locale.getDefault());
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to text");
+
+                try {
+                    startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT_TITLE);
+                }
+                catch (Exception e) {
+                    Toast
+                            .makeText(CreatePost.this, " " + e.getMessage(),
+                                    Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+        });
+
+        iv_mic_content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent
+                        = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
+                        Locale.getDefault());
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to text");
+
+                try {
+                    startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT_CONTENT);
+                }
+                catch (Exception e) {
+                    Toast
+                            .makeText(CreatePost.this, " " + e.getMessage(),
+                                    Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+        });
+
+
         Button uploadImageButton = findViewById(R.id.uploadImageBtn);
         uploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SelectImage();
             }
+
         });
 
         imageView = findViewById(R.id.imageView);
@@ -168,7 +234,26 @@ public class CreatePost extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        if (requestCode == REQUEST_CODE_SPEECH_INPUT_TITLE){
+            if (resultCode == RESULT_OK && data != null) {
+                ArrayList<String> result = data.getStringArrayListExtra(
+                        RecognizerIntent.EXTRA_RESULTS);
+                title.setText(
+                        Objects.requireNonNull(result).get(0));
+            }
+
+        }
+        if (requestCode == REQUEST_CODE_SPEECH_INPUT_CONTENT){
+            if (resultCode == RESULT_OK && data != null) {
+                ArrayList<String> result = data.getStringArrayListExtra(
+                        RecognizerIntent.EXTRA_RESULTS);
+                content.setText(
+                        Objects.requireNonNull(result).get(0));
+            }
+
+        }
     }
+
     private StorageReference uploadImage() {
         if (filePath != null) {
 
