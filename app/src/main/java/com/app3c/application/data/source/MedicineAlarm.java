@@ -65,7 +65,7 @@ public class MedicineAlarm implements Comparable<MedicineAlarm> {
         this.doseUnit = doseUnit;
     }
 
-    private List<Long> ids = new LinkedList<Long>();
+    private final List<Long> ids = new LinkedList<Long>();
 
     private boolean[] dayOfWeek = new boolean[7];
 

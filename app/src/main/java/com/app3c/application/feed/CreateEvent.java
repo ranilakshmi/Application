@@ -13,12 +13,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app3c.application.R;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -156,7 +159,7 @@ public class CreateEvent extends AppCompatActivity {
                     String date = String.valueOf(day + '-' + month + '-' + year);
                     Event_Post event_post = new Event_Post(EventName,OrgName,desc,contact,venue,date,categories);
                     FirebaseHelper helper = new FirebaseHelper(databaseReference);
-                    helper.save(event_post,"event");
+                    helper.save(event_post,"event",contact);
                     Context context = getApplicationContext();
                     CharSequence text = "Event Registered";
                     int duration = Toast.LENGTH_SHORT;
