@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -69,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/event1opt1"
                     android:text="1"
-                    android:textSize="16sp"/>
+                    android:textSize="15sp"/>
 
 
                 <RadioButton
@@ -86,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/event1opt3"
                     android:text="3"
-                    android:textSize="16sp"/>
+                    android:textSize="15sp"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -94,14 +93,14 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/event1opt4"
                     android:text="4"
-                    android:textSize="16sp"/>
+                    android:textSize="15sp"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:id="@+id/event1opt5"
                     android:text="5"
-                    android:textSize="16sp"/>
+                    android:textSize="15sp"/>
 
             </RadioGroup>
 
@@ -254,6 +253,8 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<LinearLayout-->
 <!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--    xmlns:tools="http://schemas.android.com/tools"-->
@@ -478,5 +479,4 @@
 <!--        android:layout_marginTop="40dp"-->
 <!--        android:text="Submit"-->
 <!--        />-->
-
 <!--</LinearLayout>-->
