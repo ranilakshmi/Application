@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 
 public class Elderly implements Serializable {
+    //TODO: Check if any other information is needed
     String name;
     String phoneNumber;
 

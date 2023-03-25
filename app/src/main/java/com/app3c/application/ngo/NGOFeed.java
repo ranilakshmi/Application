@@ -1,28 +1,5 @@
 package com.app3c.application.ngo;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.lifecycle.Lifecycle;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
-
-import com.app3c.application.R;
-import com.app3c.application.feed.CustomAdapter;
-import com.app3c.application.feed.Event_Post;
-import com.app3c.application.feed.FirebaseHelper;
-import com.google.android.material.tabs.TabLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.app3c.application.R;
-import com.app3c.application.blog.Blog;
-import com.app3c.application.blog.CreatePost;
 import com.app3c.application.feed.CreateEvent;
 import com.app3c.application.feed.CustomAdapter;
 import com.app3c.application.feed.Event_Post;
@@ -128,7 +103,7 @@ public class NGOFeed extends AppCompatActivity {
           //  @Override
             //public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
               //  Event_Post p = (Event_Post) adapter1.getItem(position);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
+        Toolbar toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
         Button neweventbtn = findViewById(R.id.neweventbtn);
@@ -139,7 +114,7 @@ public class NGOFeed extends AppCompatActivity {
             }
         });
 
-        lv = (ListView) findViewById(R.id.lv2);
+        lv = findViewById(R.id.lv2);
 
         //INITIALIZE FIREBASE DB
 

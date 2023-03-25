@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.app3c.application.blog.Blog;
-import com.app3c.application.blog.CreatePost;
 import com.app3c.application.elderly.Elderly;
 import com.app3c.application.feed.Event;
 
@@ -24,30 +23,20 @@ public class switchActivity extends AppCompatActivity {
         final Button feedButton = findViewById(R.id.button2);
         final Button blogButton = findViewById(R.id.button3);
 
-        medButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(switchActivity.this, MedicineActivity.class));
-            }
+        medButton.setOnClickListener(view -> startActivity(new Intent(switchActivity.this, MedicineActivity.class)));
+
+        //TODO : fix this part. user details are not passed to the new activity
+        feedButton.setOnClickListener(view -> {
+            Intent i = getIntent();
+            Elderly user = (Elderly) i.getSerializableExtra("user");
+            Intent intent = new Intent(switchActivity.this, Event.class);
+            intent.putExtra("user",user);
+            startActivity(intent);
         });
 
-        feedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = getIntent();
-                Elderly user = (Elderly) i.getSerializableExtra("user");
-                Intent intent = new Intent(switchActivity.this, Event.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
-            }
-        });
-
-        blogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(switchActivity.this,Blog.class));
-                //startActivity(new Intent(switchActivity.this, CreatePost.class));
-            }
+        blogButton.setOnClickListener(view -> {
+            startActivity(new Intent(switchActivity.this,Blog.class));
+            //startActivity(new Intent(switchActivity.this, CreatePost.class));
         });
     }
 }

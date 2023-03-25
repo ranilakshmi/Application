@@ -11,12 +11,8 @@ import android.widget.Toast;
 import com.app3c.application.R;
 import com.app3c.application.caretaker.Caretaker;
 import com.app3c.application.elderly.Elderly;
-import com.app3c.application.elderly.ElderlyLoginPage;
-import com.app3c.application.elderly.ElderlyRegistrationPage;
 import com.app3c.application.ngo.NGO;
-import com.app3c.application.ngo.NGOFeed;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 public class CustomAdapter extends BaseAdapter {
     Context c;
@@ -68,9 +64,9 @@ public class CustomAdapter extends BaseAdapter {
             convertView= LayoutInflater.from(c).inflate(R.layout.model,parent,false);
         }
 
-        TextView headTxt= (TextView) convertView.findViewById(R.id.headTxt);
-        TextView subheadTxt= (TextView) convertView.findViewById(R.id.subheadTxt);
-        TextView detailTxt= (TextView) convertView.findViewById(R.id.detailTxt);
+        TextView headTxt= convertView.findViewById(R.id.headTxt);
+        TextView subheadTxt= convertView.findViewById(R.id.subheadTxt);
+        TextView detailTxt= convertView.findViewById(R.id.detailTxt);
 
         final Event_Post p= (Event_Post) this.getItem(position);
 

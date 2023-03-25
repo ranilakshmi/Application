@@ -19,7 +19,6 @@ import androidx.annotation.NonNull;
 import com.app3c.application.blog.CreatePost;
 import com.app3c.application.elderly.Elderly;
 import com.app3c.application.feed.Event;
-import com.app3c.application.switchActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 

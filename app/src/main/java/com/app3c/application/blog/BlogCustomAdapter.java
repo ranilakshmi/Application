@@ -1,16 +1,13 @@
 package com.app3c.application.blog;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app3c.application.R;
-import com.app3c.application.switchActivity;
 
 import java.util.ArrayList;
 
@@ -43,9 +40,9 @@ public class BlogCustomAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(c).inflate(R.layout.model, parent, false);
         }
 
-        TextView headTxt = (TextView) convertView.findViewById(R.id.headTxt);
-        TextView subheadTxt= (TextView) convertView.findViewById(R.id.subheadTxt);
-        TextView detailTxt = (TextView) convertView.findViewById(R.id.detailTxt);
+        TextView headTxt = convertView.findViewById(R.id.headTxt);
+        TextView subheadTxt= convertView.findViewById(R.id.subheadTxt);
+        TextView detailTxt = convertView.findViewById(R.id.detailTxt);
 
         final BlogPost p = (BlogPost) this.getItem(position);
 

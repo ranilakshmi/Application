@@ -1,8 +1,5 @@
 package com.app3c.application.blog;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class BlogPost {
     String title;
     String content;

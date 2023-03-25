@@ -43,6 +43,6 @@ public class RecommendationSystemThread implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-       this.recommended_events =  this.helper.retrieve_recommended_events(this.user);
+       //this.recommended_events =  this.helper.retrieve_recommended_events(this.user);
     }
 }

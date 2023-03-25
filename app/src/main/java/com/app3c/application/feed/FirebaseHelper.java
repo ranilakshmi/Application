@@ -1,4 +1,5 @@
 package com.app3c.application.feed;
+
 import static com.app3c.application.elderly.UserProfile.recommend;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -13,8 +14,6 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -66,53 +65,7 @@ public class FirebaseHelper {
         }
         return saved;
     }
-/*
-
-    //IMPLEMENT FETCH DATA AND FILL ARRAYLIST
-    private void fetchData(DataSnapshot dataSnapshot)
-    {
-        Event_Post post = dataSnapshot.getValue(Event_Post.class);
-        String key = dataSnapshot.getKey();
-        post.setKey(key);
-        Posts.add(post);
-    }
-
-    private void fetchEvents(DataSnapshot dataSnapshot)
-    {
-        String event_id = dataSnapshot.getValue(String.class);
-        Log.i("event_id",event_id);
-        event_ids.add(event_id);
-    }
-
-    private void fetchEventsByDate(DataSnapshot dataSnapshot)
-    {
-        Event_Post post = dataSnapshot.getValue(Event_Post.class);
-        String key = dataSnapshot.getKey();
-        post.setKey(key);
-
-        String event_date = post.getDate();
-        SimpleDateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
-        Date d1 = new Date();
-        try {
-            d1 = sdformat.parse(event_date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Log.i("postdate",post.getDate()+"_"+d1.toString());
-
-        if (isUpcomingEvent(d1)) {
-            upcoming_events.add(post);
-        }
-        else {
-            past_events.add(post);
-        }
-    }
-
-    //RETRIEVE
-    public ArrayList<Event_Post> retrieve()
-    {
-   */
-   public ArrayList<Event_Post> retrieve() {
+    public ArrayList<Event_Post> retrieve() {
         db.child("event").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -142,10 +95,6 @@ public class FirebaseHelper {
 
         return Posts;
     }
-    
-
-    public void retrieveByDate(){
-/*
     //IMPLEMENT FETCH DATA AND FILL ARRAYLIST
     private void fetchData(DataSnapshot dataSnapshot){
         Event_Post post = dataSnapshot.getValue(Event_Post.class);
@@ -214,7 +163,6 @@ public class FirebaseHelper {
     }
     //Retrieve all events from database and separates it into two lists based on date
     public Boolean retrieveByDate() {
-    */
         db.child("event").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -223,74 +171,7 @@ public class FirebaseHelper {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 fetchEventsByDate(dataSnapshot);
-}
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
             }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    public ArrayList<Event_Post> retrieve_completed_events(){
-        retrieveByDate();
-        return past_events;
-    }
-
-    public ArrayList<Event_Post> retrieve_upcoming_events(){
-        retrieveByDate();
-        return upcoming_events;
-    }
-
-    //TODO Modify this method to retrieve the events the user has attended
-    public ArrayList<String> retrieve_registered_events(String user)
-    {
-        db.child("user").child(user).child("applied_events").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                fetchEvents(dataSnapshot);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                fetchEvents(dataSnapshot);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        return event_ids;
-    }
-
-    public Boolean isUpcomingEvent(Date date){
-        Boolean result = TRUE;
-        if(today.compareTo(date) > 0) {
-           result =  FALSE;
-        }
-        return result;
-    }
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
             }

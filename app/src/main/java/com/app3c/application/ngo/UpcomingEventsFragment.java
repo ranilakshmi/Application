@@ -1,6 +1,5 @@
 package com.app3c.application.ngo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 
 import com.app3c.application.R;
-import com.app3c.application.elderly.Elderly;
 import com.app3c.application.feed.CustomAdapter;
 import com.app3c.application.feed.FirebaseHelper;
 import com.google.firebase.database.DatabaseReference;

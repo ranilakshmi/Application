@@ -2,7 +2,6 @@ package com.app3c.application.caretaker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.app3c.application.R;
-import com.app3c.application.elderly.Elderly;
 import com.app3c.application.feed.CustomAdapter;
 import com.app3c.application.feed.Event_Post;
 import com.app3c.application.feed.FirebaseHelper;
@@ -35,7 +33,7 @@ public class CaretakerAppliedEventsPage extends AppCompatActivity {
         setContentView(R.layout.activity_caretaker_applied_events_page);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
-        lv = (ListView) findViewById(R.id.lv);
+        lv = findViewById(R.id.lv);
         //INITIALIZE FIREBASE DB
         db = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geriatric-care-66697-default-rtdb.firebaseio.com/");
         helper = new FirebaseHelper(db);

@@ -9,11 +9,9 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -22,7 +20,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatCheckBox;
-import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -35,7 +32,6 @@ import com.app3c.application.views.DayViewCheckBox;
 import com.app3c.application.views.RobotoBoldTextView;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -47,7 +43,6 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnItemSelected;
 import butterknife.Unbinder;
 
 
@@ -230,7 +225,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
                 }
                 break;
             case R.id.every_day:
-                LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.checkbox_layout);
+                LinearLayout ll = rootView.findViewById(R.id.checkbox_layout);
                 for (int i = 0; i < ll.getChildCount(); i++) {
                     View v = ll.getChildAt(i);
                     ((DayViewCheckBox) v).setChecked(checked);

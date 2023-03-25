@@ -1,6 +1,5 @@
 package com.app3c.application.feed;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Event_Post extends Post{
@@ -34,7 +33,7 @@ public class Event_Post extends Post{
         this.day = day;
         this.month = month;
         this.year = year;
-        this.date = String.valueOf(day) +"-" + String.valueOf(month)+ "-" + String.valueOf(year);
+        this.date = day +"-" + month + "-" + year;
         }
 
 

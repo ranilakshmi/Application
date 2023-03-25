@@ -3,7 +3,6 @@ package com.app3c.application.elderly;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,77 +38,69 @@ public class ElderlyRegistrationPage extends AppCompatActivity {
         final EditText ConfirmPassword = findViewById(R.id.confirmpassword);
 
         final Button RegisterButton = findViewById(R.id.RegisterBtn);
-        RegisterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String fullname = Name.getText().toString();
-                final String age = Age.getText().toString();
-                final String email = Email.getText().toString();
-                final String phone = Phone.getText().toString();
-                final String location = Location.getText().toString();
-                final String password = Password.getText().toString();
-                final String confirmpassword = ConfirmPassword.getText().toString();
+        RegisterButton.setOnClickListener(view -> {
+            final String fullname = Name.getText().toString();
+            final String age = Age.getText().toString();
+            final String email = Email.getText().toString();
+            final String phone = Phone.getText().toString();
+            final String location = Location.getText().toString();
+            final String password = Password.getText().toString();
+            final String confirmpassword = ConfirmPassword.getText().toString();
 
-                if (fullname.isEmpty() || age.isEmpty()||email.isEmpty()||phone.isEmpty()||location.isEmpty()||password.isEmpty()||confirmpassword.isEmpty()){
-                    Context context = getApplicationContext();
-                    CharSequence text = "Please enter all the details";
-                    int duration = Toast.LENGTH_SHORT;
+            if (fullname.isEmpty() || age.isEmpty()||email.isEmpty()||phone.isEmpty()||location.isEmpty()||password.isEmpty()||confirmpassword.isEmpty()){
+                Context context = getApplicationContext();
+                CharSequence text = "Please enter all the details";
+                int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
-                else if(!password.equals(confirmpassword)){
-                    Context context = getApplicationContext();
-                    CharSequence text = "Passwords are not matching";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
-                else{
-                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.hasChild(phone)){
-                                Context context = getApplicationContext();
-                                CharSequence text = "Phone is already registered";
-                                int duration = Toast.LENGTH_SHORT;
-                                Toast toast = Toast.makeText(context, text, duration);
-                                toast.show();
-                            }
-                            else{
-                                Context context = getApplicationContext();
-                                CharSequence text = "User Registered";
-                                int duration = Toast.LENGTH_SHORT;
-                                Toast toast = Toast.makeText(context, text, duration);
-                                toast.show();
-                                finish();
-
-                                databaseReference.child("user").child(phone).child("name").setValue(fullname);
-                                databaseReference.child("user").child(phone).child("age").setValue(age);
-                                databaseReference.child("user").child(phone).child("email").setValue(email);
-                                databaseReference.child("user").child(phone).child("location").setValue(location);
-                                databaseReference.child("user").child(phone).child("password").setValue(password);
-
-                                startActivity(new Intent(ElderlyRegistrationPage.this,UserProfile.class));
-                            }
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+            else if(!password.equals(confirmpassword)){
+                Context context = getApplicationContext();
+                CharSequence text = "Passwords are not matching";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+            else{
+                databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.hasChild(phone)){
+                            Context context = getApplicationContext();
+                            CharSequence text = "Phone is already registered";
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
                         }
+                        else{
+                            Context context = getApplicationContext();
+                            CharSequence text = "User Registered";
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                            finish();
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                            databaseReference.child("user").child(phone).child("name").setValue(fullname);
+                            databaseReference.child("user").child(phone).child("age").setValue(age);
+                            databaseReference.child("user").child(phone).child("email").setValue(email);
+                            databaseReference.child("user").child(phone).child("location").setValue(location);
+                            databaseReference.child("user").child(phone).child("password").setValue(password);
 
+                            startActivity(new Intent(ElderlyRegistrationPage.this,UserProfile.class));
                         }
-                    });
+                    }
 
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
             }
         });
 
         final TextView ElderlyLoginNow = findViewById(R.id.ElderlyLoginNow);
-        ElderlyLoginNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ElderlyRegistrationPage.this, ElderlyLoginPage.class));
-            }
-        });
+        ElderlyLoginNow.setOnClickListener(view -> startActivity(new Intent(ElderlyRegistrationPage.this, ElderlyLoginPage.class)));
     }
 }

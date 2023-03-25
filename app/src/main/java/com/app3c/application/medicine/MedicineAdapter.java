@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app3c.application.R;
 import com.app3c.application.data.source.MedicineAlarm;
 import com.app3c.application.views.RobotoBoldTextView;
-import com.app3c.application.views.RobotoRegularTextView;
 
 import java.util.List;
 
