@@ -16,7 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
 public class FirebaseHelper {
     DatabaseReference db;
@@ -223,7 +222,7 @@ public class FirebaseHelper {
                     this.isRegistered.add(1);
                 }
                 else{
-                    this.isRegistered.add(1);
+                    this.isRegistered.add(0);
                 }
             }
             catch(Exception e){

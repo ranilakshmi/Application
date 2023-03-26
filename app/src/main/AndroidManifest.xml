@@ -70,9 +70,6 @@
         <activity
             android:name=".feed.CreateEvent"
             android:exported="false" />
-        <activity
-        android:name=".ngo.NGOFeed"
-        android:exported="false" />
 
         <activity
             android:name=".switchActivity"

@@ -47,6 +47,7 @@ public class CreateEvent extends AppCompatActivity {
     TextView categoriesTextView;
     boolean[] selectedCategories;
     ArrayList<Integer> categoriesList = new ArrayList<>();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,10 +148,10 @@ public class CreateEvent extends AppCompatActivity {
         });
 
 
-        Resources res = getResources();
-        String[] categoriesArray = res.getStringArray(R.array.volunteering_categories);
+        //Resources res = getResources();
+        //String[] categoriesArray = res.getStringArray(R.array.volunteering_categories);
         // assign variable
-        categoriestextview = findViewById(R.id.categoriesTextView);
+        TextView categoriestextview = findViewById(R.id.categoriesTextView);
 
         // initialize selected categories array
         selectedCategories = new boolean[categoriesArray.length];
@@ -259,12 +260,11 @@ public class CreateEvent extends AppCompatActivity {
 
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
-                }
-                else {
-                    String date = day+ "-" + month + "-" + year;
-                    Event_Post event_post = new Event_Post(EventName,OrgName,desc,contact,venue,date,categories);
+                } else {
+                    String date = day + "-" + month + "-" + year;
+                    Event_Post event_post = new Event_Post(EventName, OrgName, desc, contact, venue, date, categories);
                     FirebaseHelper helper = new FirebaseHelper(databaseReference);
-                    helper.save(event_post,"event",contact);
+                    helper.save(event_post, "event", contact);
                     Context context = getApplicationContext();
                     CharSequence text = "Event Registered";
                     int duration = Toast.LENGTH_SHORT;
@@ -275,8 +275,6 @@ public class CreateEvent extends AppCompatActivity {
             }
         });
     }
-
-
 }
 
 //    // Uri indicates, where the image will be picked from
@@ -324,18 +322,18 @@ public class CreateEvent extends AppCompatActivity {
                         }
                     });
                      */
-                    FirebaseHelper helper = new FirebaseHelper(databaseReference);
-                    helper.save(event_post, "event");
-                    Context context = getApplicationContext();
-                    CharSequence text = "Event Registered";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                    finish();
-                }
-            }
-        });
-    }
+                    //FirebaseHelper helper = new FirebaseHelper(databaseReference);
+                    //helper.save(event_post, "event");
+                    //Context context = getApplicationContext();
+                    //CharSequence text = "Event Registered";
+                    //int duration = Toast.LENGTH_SHORT;
+                    //Toast toast = Toast.makeText(context, text, duration);
+                    //toast.show();
+                    //finish();
+                //}
+            //}
+        //});
+    //}
 
 /*
     public void onCheckboxClicked(View view) {

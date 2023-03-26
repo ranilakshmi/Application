@@ -203,10 +203,8 @@ public class MonthlyReportFragment extends Fragment implements MonthlyReportCont
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_filter:
+        if (item.getItemId() ==R.id.menu_filter ) {
                 showFilteringPopUpMenu();
-                break;
         }
         return true;
     }

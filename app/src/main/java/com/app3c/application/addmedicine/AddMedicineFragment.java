@@ -22,7 +22,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.app3c.application.R;
 import com.app3c.application.alarm.ReminderActivity;
 import com.app3c.application.alarm.ReminderFragment;
@@ -30,6 +29,7 @@ import com.app3c.application.data.source.MedicineAlarm;
 import com.app3c.application.data.source.Pills;
 import com.app3c.application.views.DayViewCheckBox;
 import com.app3c.application.views.RobotoBoldTextView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,7 +37,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Random;
 
 import butterknife.BindView;
@@ -117,7 +116,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        FloatingActionButton fab = Objects.requireNonNull(getActivity()).findViewById(R.id.fab_edit_task_done);
+        FloatingActionButton fab = requireActivity().findViewById(R.id.fab_edit_task_done);
         fab.setImageResource(R.drawable.ic_done);
         fab.setOnClickListener(setClickListener);
     }
@@ -145,7 +144,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
 
     @Override
     public void showMedicineList() {
-        Objects.requireNonNull(getActivity()).setResult(Activity.RESULT_OK);
+        requireActivity().setResult(Activity.RESULT_OK);
         getActivity().finish();
     }
 
@@ -356,7 +355,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
                     PendingIntent operation = PendingIntent.getActivity(getActivity(), id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                     /** Getting a reference to the System Service ALARM_SERVICE */
-                    AlarmManager alarmManager = (AlarmManager) Objects.requireNonNull(getActivity()).getSystemService(ALARM_SERVICE);
+                    AlarmManager alarmManager = (AlarmManager) requireActivity().getSystemService(ALARM_SERVICE);
 
                     /** Creating a calendar object corresponding to the date and time set by the user */
                     Calendar calendar = Calendar.getInstance();

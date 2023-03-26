@@ -45,9 +45,9 @@ public class UserProfile {
     public static String[] recommend(ArrayList<Integer> movie_ratings, HashMap<String, String[]> upcoming_events, HashMap<String, String[]> done_events) {
         int[][] mg_matrix = generate_matrix(done_events, done_events.size());
 
-        for (int i = 0; i < movie_ratings.length; i++) {
+        for (int i = 0; i < movie_ratings.size(); i++) {
             for (int j = 0; j < genres.length; j++) {
-                mg_matrix[i][j] = mg_matrix[i][j] * movie_ratings[i];
+                mg_matrix[i][j] = mg_matrix[i][j] * movie_ratings.get(i);
             }
         }
 
@@ -56,7 +56,7 @@ public class UserProfile {
 
         for (int j = 0; j < genres.length; j++) {
             int sume = 0;
-            for (int i = 0; i < movie_ratings.length; i++) {
+            for (int i = 0; i < movie_ratings.size(); i++) {
                 sume = sume + mg_matrix[i][j];
             }
             sum_added_col = sum_added_col + sume;
@@ -71,7 +71,7 @@ public class UserProfile {
         category_rating = sortByKeys(category_rating);
         //String msg = "Recommended categories are ";
         for (Map.Entry<Float, String> entry : category_rating.entrySet()) {
-            System.out.println("[" + entry.getKey() + ", " + (entry.getValue() + movie_ratings.length) + "]");
+            System.out.println("[" + entry.getKey() + ", " + (entry.getValue() + movie_ratings.size()) + "]");
         }
 
         int[][] candidate_movie_matrix = generate_matrix(upcoming_events, upcoming_events.size());
