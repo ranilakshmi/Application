@@ -47,8 +47,8 @@ public class CreatePost extends AppCompatActivity {
     // Uri indicates, where the image will be picked from
     private Uri filePath;
     private ImageView imageView;
-    private ImageView iv_mic_title;
-    private ImageView iv_mic_content;
+    ImageView iv_mic_title;
+    ImageView iv_mic_content;
     private TextView title;
     private TextView content;
     private static final int REQUEST_CODE_SPEECH_INPUT_TITLE = 1;
