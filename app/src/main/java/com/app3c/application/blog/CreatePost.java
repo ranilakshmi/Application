@@ -1,6 +1,8 @@
 package com.app3c.application.blog;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,6 +19,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -89,13 +95,14 @@ public class CreatePost extends AppCompatActivity {
                 intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to text");
 
                 try {
+                    //someActivityResultLauncher.launch(intent);
                     startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT_TITLE);
                 }
-                catch (Exception e) {
-                    Toast
-                            .makeText(CreatePost.this, " " + e.getMessage(),
-                                    Toast.LENGTH_SHORT)
-                            .show();
+                catch(ActivityNotFoundException e) {
+                    String appPackageName = "com.google.android.googlequicksearchbox";
+
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+
                 }
             }
         });
@@ -114,6 +121,7 @@ public class CreatePost extends AppCompatActivity {
 
                 try {
                     startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT_CONTENT);
+                    //someActivityResultLauncher.launch(intent);
                 }
                 catch (Exception e) {
                     Toast
@@ -206,6 +214,20 @@ public class CreatePost extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
     }
     // Override onActivityResult method
+
+//    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+//            new ActivityResultContracts.StartActivityForResult(),
+//            new ActivityResultCallback<ActivityResult>() {
+//                @Override
+//                public void onActivityResult(ActivityResult result) {
+//                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+//                        ArrayList<String> results = result.getData().getStringArrayListExtra(
+//                                RecognizerIntent.EXTRA_RESULTS);
+//                        content.setText(
+//                                Objects.requireNonNull(results).get(0));
+//                    }
+//                }
+//            });
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,
                 resultCode,
