@@ -101,7 +101,7 @@ public class ChatBot extends AppCompatActivity {
         RequestBody body = RequestBody.create(JSON, jsonBody.toString());
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/completions")
-                .header("Authorization","Bearer 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")
+                .header("Authorization","Bearer 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")
                 .post(body)
                 .build();
 
