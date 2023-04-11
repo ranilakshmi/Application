@@ -91,6 +91,10 @@
             android:theme="@style/AppTheme.NoActionBar"
             />
 
+        <activity
+            android:name=".ChatBot"
+            android:exported="false" />
+
     </application>
 
 </manifest>

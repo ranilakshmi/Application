@@ -23,6 +23,8 @@ public class switchActivity extends AppCompatActivity {
         final Button medButton = findViewById(R.id.button1);
         final Button feedButton = findViewById(R.id.button2);
         final Button blogButton = findViewById(R.id.button3);
+        final Button chatButton = findViewById(R.id.chatbot);
+
 
         medButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +48,14 @@ public class switchActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(switchActivity.this,Blog.class));
+                //startActivity(new Intent(switchActivity.this, CreatePost.class));
+            }
+        });
+
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(switchActivity.this,ChatBot.class));
                 //startActivity(new Intent(switchActivity.this, CreatePost.class));
             }
         });
