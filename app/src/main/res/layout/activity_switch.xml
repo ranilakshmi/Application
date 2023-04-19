@@ -54,6 +54,14 @@
                 app:cornerRadius = "20dp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/chatbot"
+        android:drawableLeft="@drawable/chat_icon"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="100dp"
+        app:cornerRadius = "5dp"/>
 </LinearLayout>
 
 <!--<?xml version="1.0" encoding="utf-8"?>-->
