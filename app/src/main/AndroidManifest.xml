@@ -71,6 +71,10 @@
             android:name=".switchActivity"
             android:exported="false" />
         <activity
+            android:name=".ngo.NGOFeed"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".medicine.MedicineActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />

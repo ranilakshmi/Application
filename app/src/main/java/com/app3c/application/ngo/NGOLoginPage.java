@@ -64,8 +64,11 @@ public class NGOLoginPage extends AppCompatActivity {
                                     int duration = Toast.LENGTH_SHORT;
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
-                                    startActivity(new Intent(NGOLoginPage.this, CreateEvent.class));
-                                }
+                                    //startActivity(new Intent(NGOLoginPage.this, CreateEvent.class));
+                                    Intent intent = new Intent(NGOLoginPage.this, NGOFeed.class);
+                                    NGO ngo = new NGO(contact);
+                                    intent.putExtra("ngo",ngo);
+                                    startActivity(intent);}
                                 else{
                                     Context context = getApplicationContext();
                                     CharSequence text = "Incorrect password";
